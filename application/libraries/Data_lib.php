@@ -17,6 +17,12 @@ class Data_lib {
 		return $CI->data->addDepartment($data);
 	}
 
+	public function getDepartments()
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getDepartments();
+	}
 
 	public function getBatches()
 	{

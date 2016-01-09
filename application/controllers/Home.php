@@ -34,6 +34,16 @@ class Home extends CI_Controller {
 		$this->load->view('departments', $data);
 	}
 
+	public function add_subject()
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['departments'] =  $this->data_lib->getDepartments();
+		$this->load->view('add_subject', $data);
+	}
+
 	public function addBatch()
 	{
 		$start_year = '';

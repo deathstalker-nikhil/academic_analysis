@@ -44,6 +44,17 @@ class Home extends CI_Controller {
 		$this->load->view('add_subject', $data);
 	}
 
+	public function add_student()
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['departments'] =  $this->data_lib->getDepartments();
+		$data['batches'] =  $this->data_lib->getBatches();
+		$this->load->view('add_student', $data);
+	}
+
 	public function addBatch()
 	{
 		$start_year = '';

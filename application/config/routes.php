@@ -53,5 +53,6 @@ $route['default_controller'] = 'Home';
 $route['batches'] = 'Home/batches';
 $route['departments'] = 'Home/departments';
 $route['add_subject'] = 'Home/add_subject';
+$route['add_student'] = 'Home/add_student';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

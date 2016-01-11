@@ -9,4 +9,7 @@
                    <h4 style="text-align: center;">My Account</h4>
                     <a href="/merchant_coupons_issued" class="list-group-item side">My Profile</a>
                     <a href="/users_with_coupons" class="list-group-item side">Change Password</a>
+                    <h4 style="text-align: center;">Academic Analysis</h4>
+                     <a href="/merchant_coupons_issued" class="list-group-item side">Student Analysis</a>
+                     <a href="/users_with_coupons" class="list-group-item side">Subject Analysis</a>
                 </div>

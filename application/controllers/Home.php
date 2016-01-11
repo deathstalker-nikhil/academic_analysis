@@ -26,12 +26,29 @@ class Home extends CI_Controller {
 		$this->load->view('batches', $data);
 	}
 
+	public function add_scores()
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->view('add_scores', $data);
+	}
+
+
 	public function departments()
 	{
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
 		$this->load->view('departments', $data);
+	}
+
+	public function subject_analysis()
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->view('subject_analysis', $data);
 	}
 
 	public function add_subject()
@@ -42,6 +59,16 @@ class Home extends CI_Controller {
 		$this->load->library('Data_lib');
 		$data['departments'] =  $this->data_lib->getDepartments();
 		$this->load->view('add_subject', $data);
+	}
+
+	public function choose_subject_for_analysis()
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['departments'] =  $this->data_lib->getDepartments();
+		$this->load->view('choose_subject_for_analysis', $data);
 	}
 
 	public function add_student()

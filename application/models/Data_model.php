@@ -13,6 +13,11 @@ class Data_model extends CI_Model {
 		return $this->db->insert('batches',$data);
 	}
 
+	public function addSubject($data)
+	{
+		return $this->db->insert('subjects',$data);
+	}
+
 	public function addDepartment($data)
 	{
 		return $this->db->insert('departments',$data);

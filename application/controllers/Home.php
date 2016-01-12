@@ -140,4 +140,43 @@ class Home extends CI_Controller {
 		}
 	}
 
+
+	public function addSubject()
+	{
+		$department_id = '';
+		$subject_code = '';
+		$subject_name = '';
+
+		if ($x = $this->input->post('subject_name')) {
+			$subject_name = $x;
+		}
+		if ($x = $this->input->post('subject_code')) {
+			$subject_code = $x;
+		}
+		if ($x = $this->input->post('department_id')) {
+			$department_id = $x;
+		}
+
+
+
+
+		if ($department_id==''||$subject_code==''||$subject_name=='') {
+			die("Incomple Details");
+		}
+
+			$data = array(
+				'subject_name' => $subject_name,
+				'subject_code' => $subject_code,
+				'department_id' => $department_id
+				);
+		$this->load->library('Data_lib');
+		$result = $this->data_lib->addSubject($data);
+		if ($result) {
+			redirect(base_url('/batches'));
+		}
+		else {
+			die("Some error Occured..:(");
+		}
+	}
+
 }

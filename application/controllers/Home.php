@@ -39,6 +39,9 @@ class Home extends CI_Controller {
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['batches'] =  $this->data_lib->getBatches();
+		$data['subjects'] =  $this->data_lib->getSubjects();
 		$this->load->view('add_subject_to_batch', $data);
 	}
 
@@ -164,9 +167,6 @@ class Home extends CI_Controller {
 			$department_id = $x;
 		}
 
-
-
-
 		if ($department_id==''||$subject_code==''||$subject_name=='') {
 			die("Incomple Details");
 		}
@@ -184,6 +184,44 @@ class Home extends CI_Controller {
 		else {
 			die("Some error Occured..:(");
 		}
+	}
+
+	public function addSubjectToBatch()
+	{
+		$subject_id = '';
+		$batch_id = '';
+
+		if ($x = $this->input->post('batch_id')) {
+			$batch_id = $x;
+		}
+
+		if ($x = $this->input->post('subject_id')) {
+			$subject_id = $x;
+		}
+
+
+		if ($batch_id==''||$subject_id=='') {
+			die("Incomple Details");
+		}
+
+			$data = array(
+				'batch_id' => $batch_id,
+				'subject_id' => $subject_id
+				);
+		$this->load->library('Data_lib');
+		$result = $this->data_lib->addSubjectToBatch($data);
+		if ($result) {
+			redirect(base_url('/batches'));
+		}
+		else {
+			die("Some error Occured..:(");
+		}
+	}
+
+	public function test($id='')
+	{
+		if ($id==1)
+			return "one";
 	}
 
 }

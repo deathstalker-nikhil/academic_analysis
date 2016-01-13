@@ -86,13 +86,14 @@
                                       </tbody>
                                   </table></div></div>
                                   <h3>ADD SUBJECT TO BATCH</h3>
-                                  <form method="post" action="/home/addSubject">
+                                  <form method="post" action="/home/addSubjectToBatch">
                                   <div class="col-md-9">
                                       <div class="form-group">
                                           <label>Subject Name</label>
-                                          <select class="form-control" name="department_id">
-                                            <option>Computer Networks</option>
-                                            <option>Operating System</option>
+                                          <select class="form-control" name="subject_id">
+                                              <?php foreach ($subjects as $key => $value) { ?>
+                                            <option value="<?php echo $value['id'] ?>"><?php echo $value['subject_code'].":".$value['subject_name'] ?></option>
+                                          <?php } ?>
                                           </select>
 
                                       </div>
@@ -101,15 +102,16 @@
                                   <div class="col-md-3">
                                       <div class="form-group">
                                           <label>Batch</label>
-                                          <select class="form-control" name="department_id">
-                                            <option>2012-2016</option>
-                                            <option>2013-2017</option>
+                                          <select class="form-control" name="batch_id">
+                                            <?php foreach ($batches as $key => $value) { ?>
+                                            <option value="<?php echo $value['id']; ?>"><?php echo $value['start_year']."-".$value['end_year']; ?></option>
+                                            <?php } ?>
                                           </select>
 
                                       </div>
                                   </div>
 
-
+              
                                   <div class="col-md-12">
                                       <div class="form-group">
 

@@ -34,6 +34,13 @@ class Home extends CI_Controller {
 		$this->load->view('add_scores', $data);
 	}
 
+	public function add_subject_to_batch()
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->view('add_subject_to_batch', $data);
+	}
 
 	public function departments()
 	{

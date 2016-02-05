@@ -55,7 +55,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>Department</label>
-                        <select class="form-control" name="department">
+                        <select class="form-control" name="department_id">
                           <?php foreach ($departments as $key => $value) { ?>
                           <option value="<?php echo $value['id']; ?>"><?php echo $value['department_name']; ?></option>
                           <?php } ?>

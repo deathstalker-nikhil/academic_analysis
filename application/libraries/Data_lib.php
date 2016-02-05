@@ -17,6 +17,20 @@ class Data_lib {
 		return $CI->data->addDepartment($data);
 	}
 
+	public function addSubject($data)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->addSubject($data);
+	}
+
+	public function addSubjectToBatch($data)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->addSubjectToBatch($data);
+	}
+
 	public function getDepartments()
 	{
 		$CI = & get_instance();
@@ -29,6 +43,13 @@ class Data_lib {
 		$CI = & get_instance();
 		$CI->load->model('data_model','data');
 		return $CI->data->getBatches();
+	}
+
+	public function getSubjects()
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getSubjects();
 	}
 
 }

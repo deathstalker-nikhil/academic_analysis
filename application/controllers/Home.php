@@ -34,6 +34,16 @@ class Home extends CI_Controller {
 		$this->load->view('add_scores', $data);
 	}
 
+	public function add_subject_to_batch()
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['batches'] =  $this->data_lib->getBatches();
+		$data['subjects'] =  $this->data_lib->getSubjects();
+		$this->load->view('add_subject_to_batch', $data);
+	}
 
 	public function departments()
 	{
@@ -138,6 +148,80 @@ class Home extends CI_Controller {
 		else {
 			die("Some error Occured..:(");
 		}
+	}
+
+
+	public function addSubject()
+	{
+		$department_id = '';
+		$subject_code = '';
+		$subject_name = '';
+
+		if ($x = $this->input->post('subject_name')) {
+			$subject_name = $x;
+		}
+		if ($x = $this->input->post('subject_code')) {
+			$subject_code = $x;
+		}
+		if ($x = $this->input->post('department_id')) {
+			$department_id = $x;
+		}
+
+		if ($department_id==''||$subject_code==''||$subject_name=='') {
+			die("Incomple Details");
+		}
+
+			$data = array(
+				'subject_name' => $subject_name,
+				'subject_code' => $subject_code,
+				'department_id' => $department_id
+				);
+		$this->load->library('Data_lib');
+		$result = $this->data_lib->addSubject($data);
+		if ($result) {
+			redirect(base_url('/batches'));
+		}
+		else {
+			die("Some error Occured..:(");
+		}
+	}
+
+	public function addSubjectToBatch()
+	{
+		$subject_id = '';
+		$batch_id = '';
+
+		if ($x = $this->input->post('batch_id')) {
+			$batch_id = $x;
+		}
+
+		if ($x = $this->input->post('subject_id')) {
+			$subject_id = $x;
+		}
+
+
+		if ($batch_id==''||$subject_id=='') {
+			die("Incomple Details");
+		}
+
+			$data = array(
+				'batch_id' => $batch_id,
+				'subject_id' => $subject_id
+				);
+		$this->load->library('Data_lib');
+		$result = $this->data_lib->addSubjectToBatch($data);
+		if ($result) {
+			redirect(base_url('/batches'));
+		}
+		else {
+			die("Some error Occured..:(");
+		}
+	}
+
+	public function test($id='')
+	{
+		if ($id==1)
+			return "one";
 	}
 
 }

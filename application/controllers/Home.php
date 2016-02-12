@@ -215,7 +215,7 @@ class Home extends CI_Controller {
 
 
 		if ($batch_id==''||$subject_id=='') {
-			die("Incomple Details");
+			die("Incomplete Details");
 		}
 
 			$data = array(
@@ -225,7 +225,7 @@ class Home extends CI_Controller {
 		$this->load->library('Data_lib');
 		$result = $this->data_lib->addSubjectToBatch($data);
 		if ($result) {
-			redirect(base_url('/batches'));
+			redirect(base_url('/add_subject_to_batch'));
 		}
 		else {
 			die("Some error Occured..:(");

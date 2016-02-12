@@ -4,6 +4,7 @@
                     <a href="/departments" class="list-group-item side">Departments</a>
                     <a href="/subjects" class="list-group-item side">Subjects</a>
                     <a href="/add_subject" class="list-group-item side">Add Subject</a>
+                    <a href="/add_subject_to_batch" class="list-group-item side">Add Subject to Batch</a>
                     <a href="/students" class="list-group-item side">Students</a>
                     <a href="/add_student" class="list-group-item side">Add Student</a>
                    <h4 style="text-align: center;">My Account</h4>

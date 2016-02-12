@@ -84,12 +84,13 @@
                                           </tr>
                                       </thead>
                                       <tbody>
-
+                                          <?php foreach ($departments as $key => $value) {?>
                                           <tr class="odd gradeX">
-                                              <td>Department of Computer Science and Engineering</td>
+                                              <td><?php echo $value['department_name']; ?></td>
                                               <td><a class="btn btn-success">Edit</a></td>
                                               <td><a class="btn btn-danger">Delete</a></td>
                                           </tr>
+                                          <?php } ?>
 
                                       </tbody>
                                   </table></div></div>

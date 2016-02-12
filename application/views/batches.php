@@ -93,13 +93,13 @@
                                           </tr>
                                       </thead>
                                       <tbody>
-
+                                        <?php foreach ($batches as $key => $value) {?>
                                           <tr class="odd gradeX">
-                                              <td>2012-2016</td>
+                                              <td><?php echo $value['start_year']."-".$value['end_year']; ?></td>
                                               <td><a class="btn btn-success">Edit</a></td>
                                               <td><a class="btn btn-danger">Delete</a></td>
                                           </tr>
-
+                                          <?php } ?>
                                       </tbody>
                                   </table></div></div>
             </div>

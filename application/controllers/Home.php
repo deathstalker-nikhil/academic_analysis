@@ -23,6 +23,8 @@ class Home extends CI_Controller {
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['batches'] =  $this->data_lib->getBatches();
 		$this->load->view('batches', $data);
 	}
 
@@ -50,6 +52,8 @@ class Home extends CI_Controller {
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['departments'] =  $this->data_lib->getDepartments();
 		$this->load->view('departments', $data);
 	}
 

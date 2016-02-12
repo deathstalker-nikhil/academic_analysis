@@ -58,5 +58,6 @@ $route['add_scores'] = 'Home/add_scores';
 $route['choose_subject_for_analysis'] = 'Home/choose_subject_for_analysis';
 $route['add_subject_to_batch'] = 'Home/add_subject_to_batch';
 $route['subject_analysis'] = 'Home/subject_analysis';
+$route['subjects'] = 'Home/subjects';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

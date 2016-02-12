@@ -65,6 +65,16 @@ class Home extends CI_Controller {
 		$this->load->view('subject_analysis', $data);
 	}
 
+	public function subjects()
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['subjects'] =  $this->data_lib->getSubjects();
+		$this->load->view('subjects', $data);
+	}
+
 	public function add_subject()
 	{
 		$data['head'] = $this->head;
@@ -172,7 +182,7 @@ class Home extends CI_Controller {
 		}
 
 		if ($department_id==''||$subject_code==''||$subject_name=='') {
-			die("Incomple Details");
+			die("Incomplete Details");
 		}
 
 			$data = array(
@@ -183,7 +193,7 @@ class Home extends CI_Controller {
 		$this->load->library('Data_lib');
 		$result = $this->data_lib->addSubject($data);
 		if ($result) {
-			redirect(base_url('/batches'));
+			redirect(base_url('/subjects'));
 		}
 		else {
 			die("Some error Occured..:(");

@@ -10,6 +10,13 @@ class Data_lib {
 		return $CI->data->addBatch($data);
 	}
 
+	public function addStudent($data)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->addStudent($data);
+	}
+
 	public function addDepartment($data)
 	{
 		$CI = & get_instance();
@@ -43,6 +50,13 @@ class Data_lib {
 		$CI = & get_instance();
 		$CI->load->model('data_model','data');
 		return $CI->data->getBatches();
+	}
+
+	public function getStudents()
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getStudents();
 	}
 
 	public function getSubjects()

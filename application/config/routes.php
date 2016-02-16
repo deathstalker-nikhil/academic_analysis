@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'Home';
 $route['batches'] = 'Home/batches';
+$route['students'] = 'Home/students';
 $route['departments'] = 'Home/departments';
 $route['add_subject'] = 'Home/add_subject';
 $route['add_student'] = 'Home/add_student';

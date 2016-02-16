@@ -75,6 +75,16 @@ class Home extends CI_Controller {
 		$this->load->view('subjects', $data);
 	}
 
+	public function students()
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['students'] =  $this->data_lib->getStudents();
+		$this->load->view('students', $data);
+	}
+
 	public function add_subject()
 	{
 		$data['head'] = $this->head;
@@ -132,6 +142,59 @@ class Home extends CI_Controller {
 		$result = $this->data_lib->addBatch($data);
 		if ($result) {
 			redirect(base_url('/batches'));
+		}
+		else {
+			die("Some error Occured..:(");
+		}
+	}
+
+	public function addStudent()
+	{
+		$name = '';
+		$university_roll_number = '';
+		$password = '';
+		$batch = '';
+		$department = '';
+
+		if ($x = $this->input->post('name')) {
+			$name = $x;
+		}
+
+		if ($x = $this->input->post('university_roll_number')) {
+			$university_roll_number = $x;
+		}
+
+		$password = $university_roll_number;
+
+		if ($x = $this->input->post('university_roll_number')) {
+			$university_roll_number = $x;
+		}
+
+		if ($x = $this->input->post('batch')) {
+			$batch = $x;
+		}
+
+		if ($x = $this->input->post('department')) {
+			$department = $x;
+		}
+
+
+
+		if ($name==''||$university_roll_number==''||$password==''||$batch==''||$department=='') {
+			die("Incomple Details");
+		}
+
+			$data = array(
+				'name' => $name,
+				'university_roll_number' => $university_roll_number,
+				'password' => $password,
+				'batch' => $batch,
+				'department' => $department
+				);
+		$this->load->library('Data_lib');
+		$result = $this->data_lib->addStudent($data);
+		if ($result) {
+			redirect(base_url('/students'));
 		}
 		else {
 			die("Some error Occured..:(");

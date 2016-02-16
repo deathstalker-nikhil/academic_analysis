@@ -13,6 +13,11 @@ class Data_model extends CI_Model {
 		return $this->db->insert('batches',$data);
 	}
 
+	public function addStudent($data)
+	{
+		return $this->db->insert('students',$data);
+	}
+
 	public function addSubject($data)
 	{
 		return $this->db->insert('subjects',$data);
@@ -31,6 +36,12 @@ class Data_model extends CI_Model {
 	public function getDepartments()
 	{
 		$result = $this->db->get('departments');
+		return $result->result_array();
+	}
+
+	public function getStudents()
+	{
+		$result = $this->db->get('students');
 		return $result->result_array();
 	}
 

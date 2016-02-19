@@ -58,6 +58,9 @@
                                       <thead>
                                           <tr>
                                               <th>Subject Name</th>
+                                              <th>Internal</th>
+                                              <th>External</th>
+                                              <th>total</th>
                                               <th>Edit</th>
                                               <th>Delete</th>
 
@@ -69,6 +72,9 @@
                                           <?php foreach ($subjects as $key => $value) {?>
                                           <tr class="odd gradeX">
                                               <td><?php echo $value['subject_name']; ?></td>
+                                              <td><?php echo $value['internal']; ?></td>
+                                              <td><?php echo $value['external']; ?></td>
+                                              <td><?php echo $value['total']; ?></td>
                                               <td><a class="btn btn-success">Edit</a></td>
                                               <td><a class="btn btn-danger">Delete</a></td>
                                           </tr>

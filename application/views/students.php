@@ -57,6 +57,7 @@
                   <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                       <thead>
                                           <tr>
+                                              <th>ID</th>
                                               <th>Name</th>
                                               <th>Roll Number</th>
                                               <th>Batch</th>
@@ -66,9 +67,16 @@
                                       <tbody>
                                           <?php foreach ($students as $key => $value) {?>
                                           <tr class="odd gradeX">
+                                            <td><?php echo $value['id']; ?></td>
                                               <td><?php echo $value['name']; ?></td>
                                             <td><?php echo $value['university_roll_number']; ?></td>
-                                            <td><?php echo $value['batch']; ?></td>
+                                            <td><?php
+                                            foreach ($batches as $key => $batch) {
+                                              if ($batch['id'] == $value['batch']){
+                                                echo $batch['start_year']."-".$batch['end_year'];
+                                              }
+                                            }
+                                          ?>
                                           </tr>
                                           <?php } ?>
 

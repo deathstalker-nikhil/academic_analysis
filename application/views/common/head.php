@@ -68,15 +68,7 @@
                             <a class="page-scroll" href="#">Home</a>
 
                         </li>
-                         <li>
-                            <a class="page-scroll" href="#">Departments</a>
-
-                        </li>
-
-                         <li>
-                            <a class="page-scroll" href="#">Placement Cell</a>
-
-                        </li>
+                        
 
                 </ul>
             </div>

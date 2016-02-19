@@ -82,6 +82,7 @@ class Home extends CI_Controller {
 		$data['left'] = $this->left;
 		$this->load->library('Data_lib');
 		$data['students'] =  $this->data_lib->getStudents();
+		$data['batches'] = $this->data_lib->getBatches();
 		$this->load->view('students', $data);
 	}
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.4.13.1deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2016 at 01:48 PM
--- Server version: 5.5.46-0ubuntu0.14.04.2
--- PHP Version: 5.5.9-1ubuntu4.14
+-- Generation Time: Mar 20, 2016 at 11:39 PM
+-- Server version: 5.6.28-0ubuntu0.15.10.1
+-- PHP Version: 5.6.11-1ubuntu3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `academic_analysis`
@@ -27,11 +27,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `batches` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `id` int(3) NOT NULL,
   `start_year` int(5) NOT NULL,
-  `end_year` int(5) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `end_year` int(5) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `batches`
@@ -48,10 +47,9 @@ INSERT INTO `batches` (`id`, `start_year`, `end_year`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `departments` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
-  `department_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `id` int(3) NOT NULL,
+  `department_name` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `departments`
@@ -64,58 +62,603 @@ INSERT INTO `departments` (`id`, `department_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `students`
+--
+
+CREATE TABLE IF NOT EXISTS `students` (
+  `id` int(5) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `roll_number` bigint(100) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `department` int(3) NOT NULL,
+  `batch` int(3) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=421 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `name`, `roll_number`, `password`, `department`, `batch`) VALUES
+(1, 'divya', 1000000001, '1000000001', 1, 1),
+(2, 'Priyanka', 1000000002, '1000000002', 1, 1),
+(3, 'priya', 1000000003, '1000000003', 1, 1),
+(4, 'tanvi', 1000000004, '1000000004', 1, 1),
+(5, 'Shreya', 1000000005, '1000000005', 1, 1),
+(6, 'riya', 1000000006, '1000000006', 1, 1),
+(7, 'Sneha', 1000000007, '1000000007', 1, 1),
+(8, 'Aishwarya', 1000000008, '1000000008', 1, 1),
+(9, 'Gayatri', 1000000009, '1000000009', 1, 1),
+(10, 'vani', 1000000010, '1000000010', 1, 1),
+(11, 'leah', 1000000011, '1000000011', 1, 1),
+(12, 'Pavithra', 1000000012, '1000000012', 1, 1),
+(13, 'seema', 1000000013, '1000000013', 1, 1),
+(14, 'Anusha', 1000000014, '1000000014', 1, 1),
+(15, 'Aswini', 1000000015, '1000000015', 1, 1),
+(16, 'nishi', 1000000016, '1000000016', 1, 1),
+(17, 'Anushri', 1000000017, '1000000017', 1, 1),
+(18, 'Ayushi', 1000000018, '1000000018', 1, 1),
+(19, 'Radhika', 1000000019, '1000000019', 1, 1),
+(20, 'tanu', 1000000020, '1000000020', 1, 1),
+(21, 'varsha', 1000000021, '1000000021', 1, 1),
+(22, 'krithika', 1000000022, '1000000022', 1, 1),
+(23, 'Niharika', 1000000023, '1000000023', 1, 1),
+(24, 'Ishita', 1000000024, '1000000024', 1, 1),
+(25, 'natasha', 1000000025, '1000000025', 1, 1),
+(26, 'Neha', 1000000026, '1000000026', 1, 1),
+(27, 'Ira', 1000000027, '1000000027', 1, 1),
+(28, 'Suhani', 1000000028, '1000000028', 1, 1),
+(29, 'shivangi', 1000000029, '1000000029', 1, 1),
+(30, 'Anjali', 1000000030, '1000000030', 1, 1),
+(31, 'Isha', 1000000031, '1000000031', 1, 1),
+(32, 'rhea', 1000000032, '1000000032', 1, 1),
+(33, 'ananya', 1000000033, '1000000033', 1, 1),
+(34, 'shivani', 1000000034, '1000000034', 1, 1),
+(35, 'Sakshi', 1000000035, '1000000035', 1, 1),
+(36, 'Arya', 1000000036, '1000000036', 1, 1),
+(37, 'deepa', 1000000037, '1000000037', 1, 1),
+(38, 'juvina', 1000000038, '1000000038', 1, 1),
+(39, 'Angel', 1000000039, '1000000039', 1, 1),
+(40, 'anamika', 1000000040, '1000000040', 1, 1),
+(41, 'Lavanya', 1000000041, '1000000041', 1, 1),
+(42, 'ishika', 1000000042, '1000000042', 1, 1),
+(43, 'Lily', 1000000043, '1000000043', 1, 1),
+(44, 'Sam', 1000000044, '1000000044', 1, 1),
+(45, 'vaishnavi', 1000000045, '1000000045', 1, 1),
+(46, 'diksha', 1000000046, '1000000046', 1, 1),
+(47, 'Arusha', 1000000047, '1000000047', 1, 1),
+(48, 'Niti', 1000000048, '1000000048', 1, 1),
+(49, 'vidhya', 1000000049, '1000000049', 1, 1),
+(50, 'kavya', 1000000050, '1000000050', 1, 2),
+(51, 'Namrata', 1000000051, '1000000051', 1, 2),
+(52, 'Lish', 1000000052, '1000000052', 1, 2),
+(53, 'hannah', 1000000053, '1000000053', 1, 2),
+(54, 'Gowri', 1000000054, '1000000054', 1, 2),
+(55, 'Shriya', 1000000055, '1000000055', 1, 2),
+(56, 'Archita', 1000000056, '1000000056', 1, 2),
+(57, 'Rashi', 1000000057, '1000000057', 1, 2),
+(58, 'kamalika', 1000000058, '1000000058', 1, 2),
+(59, 'Khushi', 1000000059, '1000000059', 1, 2),
+(60, 'Eli', 1000000060, '1000000060', 1, 2),
+(61, 'jiffy', 1000000061, '1000000061', 1, 2),
+(62, 'chanchal', 1000000062, '1000000062', 1, 2),
+(63, 'Isabel', 1000000063, '1000000063', 1, 2),
+(64, 'jasmine', 1000000064, '1000000064', 1, 2),
+(65, 'Pradeepa', 1000000065, '1000000065', 1, 2),
+(66, 'Nandita', 1000000066, '1000000066', 1, 2),
+(67, 'Richa', 1000000067, '1000000067', 1, 2),
+(68, 'AARUSHI', 1000000068, '1000000068', 1, 2),
+(69, 'ANJU', 1000000069, '1000000069', 1, 2),
+(70, 'sania', 1000000070, '1000000070', 1, 2),
+(71, 'krittika', 1000000071, '1000000071', 1, 2),
+(72, 'sasashy', 1000000072, '1000000072', 1, 2),
+(73, 'Sonam', 1000000073, '1000000073', 1, 2),
+(74, 'Apoorva', 1000000074, '1000000074', 1, 2),
+(75, 'Gitanjali', 1000000075, '1000000075', 1, 2),
+(76, 'keerthi', 1000000076, '1000000076', 1, 2),
+(77, 'Alice', 1000000077, '1000000077', 1, 2),
+(78, 'Manasi', 1000000078, '1000000078', 1, 2),
+(79, 'Urvashi', 1000000079, '1000000079', 1, 2),
+(80, 'Sowmya', 1000000080, '1000000080', 1, 2),
+(81, 'geyir', 1000000081, '1000000081', 1, 2),
+(82, 'Manasa', 1000000082, '1000000082', 1, 2),
+(83, 'Anushree', 1000000083, '1000000083', 1, 2),
+(84, 'Lala', 1000000084, '1000000084', 1, 2),
+(85, 'simran', 1000000085, '1000000085', 1, 2),
+(86, 'Katherine', 1000000086, '1000000086', 1, 2),
+(87, 'Anjana', 1000000087, '1000000087', 1, 2),
+(88, 'Anisha', 1000000088, '1000000088', 1, 2),
+(89, 'Akansha', 1000000089, '1000000089', 1, 2),
+(90, 'Sadaf', 1000000090, '1000000090', 1, 2),
+(91, 'Nishita', 1000000091, '1000000091', 1, 2),
+(92, 'diya', 1000000092, '1000000092', 1, 2),
+(93, 'Siya', 1000000093, '1000000093', 1, 2),
+(94, 'Abigail', 1000000094, '1000000094', 1, 2),
+(95, 'suvi', 1000000095, '1000000095', 1, 2),
+(96, 'binita', 1000000096, '1000000096', 1, 2),
+(97, 'Sheal', 1000000097, '1000000097', 1, 2),
+(98, 'sanjana', 1000000098, '1000000098', 1, 2),
+(99, 'prachi', 1000000099, '1000000099', 1, 2),
+(100, 'Abhishek', 1000000100, '1000000100', 1, 3),
+(101, 'Aditya', 1000000101, '1000000101', 1, 3),
+(102, 'Amit', 1000000102, '1000000102', 1, 3),
+(103, 'mahesh', 1000000103, '1000000103', 1, 3),
+(104, 'ROHIT', 1000000104, '1000000104', 1, 3),
+(105, 'yash', 1000000105, '1000000105', 1, 3),
+(106, 'shyam', 1000000106, '1000000106', 1, 3),
+(107, 'Ankit', 1000000107, '1000000107', 1, 3),
+(108, 'Deepak', 1000000108, '1000000108', 1, 3),
+(109, 'Arjun', 1000000109, '1000000109', 1, 3),
+(110, 'Vinay', 1000000110, '1000000110', 1, 3),
+(111, 'Parth', 1000000111, '1000000111', 1, 3),
+(112, 'Mayank', 1000000112, '1000000112', 1, 3),
+(113, 'Manoj', 1000000113, '1000000113', 1, 3),
+(114, 'ankur', 1000000114, '1000000114', 1, 3),
+(115, 'Karan', 1000000115, '1000000115', 1, 3),
+(116, 'rakesh', 1000000116, '1000000116', 1, 3),
+(117, 'Aryan', 1000000117, '1000000117', 1, 3),
+(118, 'Raj', 1000000118, '1000000118', 1, 3),
+(119, 'Naveen', 1000000119, '1000000119', 1, 3),
+(120, 'Ashish', 1000000120, '1000000120', 1, 3),
+(121, 'ABHI', 1000000121, '1000000121', 1, 3),
+(122, 'Rishabh', 1000000122, '1000000122', 1, 3),
+(123, 'Aaditya', 1000000123, '1000000123', 1, 3),
+(124, 'akash', 1000000124, '1000000124', 1, 3),
+(125, 'Sam', 1000000125, '1000000125', 1, 3),
+(126, 'Neeraj', 1000000126, '1000000126', 1, 3),
+(127, 'kumar', 1000000127, '1000000127', 1, 3),
+(128, 'vivek', 1000000128, '1000000128', 1, 3),
+(129, 'Vaibhav', 1000000129, '1000000129', 1, 3),
+(130, 'Abhinav', 1000000130, '1000000130', 1, 3),
+(131, 'Rohan', 1000000131, '1000000131', 1, 3),
+(132, 'ajith', 1000000132, '1000000132', 1, 3),
+(133, 'Varun', 1000000133, '1000000133', 1, 3),
+(134, 'Anish', 1000000134, '1000000134', 1, 3),
+(135, 'ALOK', 1000000135, '1000000135', 1, 3),
+(136, 'abdul', 1000000136, '1000000136', 1, 3),
+(137, 'Raghav', 1000000137, '1000000137', 1, 3),
+(138, 'SUNNY', 1000000138, '1000000138', 1, 3),
+(139, 'Siddharth', 1000000139, '1000000139', 1, 3),
+(140, 'vedant', 1000000140, '1000000140', 1, 3),
+(141, 'vikas', 1000000141, '1000000141', 1, 3),
+(142, 'MOHIT', 1000000142, '1000000142', 1, 3),
+(143, 'Ajay', 1000000143, '1000000143', 1, 3),
+(144, 'jay', 1000000144, '1000000144', 1, 3),
+(145, 'vishal', 1000000145, '1000000145', 1, 3),
+(146, 'Raju', 1000000146, '1000000146', 1, 3),
+(147, 'manish', 1000000147, '1000000147', 1, 3),
+(148, 'Soham', 1000000148, '1000000148', 1, 3),
+(149, 'shivam', 1000000149, '1000000149', 1, 3),
+(150, 'Pranav', 1000000150, '1000000150', 1, 4),
+(151, 'Nishant', 1000000151, '1000000151', 1, 4),
+(152, 'Nitin', 1000000152, '1000000152', 1, 4),
+(153, 'Krishna', 1000000153, '1000000153', 1, 4),
+(154, 'john', 1000000154, '1000000154', 1, 4),
+(155, 'Anil', 1000000155, '1000000155', 1, 4),
+(156, 'Deep', 1000000156, '1000000156', 1, 4),
+(157, 'Ramanan', 1000000157, '1000000157', 1, 4),
+(158, 'prince', 1000000158, '1000000158', 1, 4),
+(159, 'Aniket', 1000000159, '1000000159', 1, 4),
+(160, 'Swapnil', 1000000160, '1000000160', 1, 4),
+(161, 'dinesh', 1000000161, '1000000161', 1, 4),
+(162, 'pawan', 1000000162, '1000000162', 1, 4),
+(163, 'Rajeev', 1000000163, '1000000163', 1, 4),
+(164, 'atul', 1000000164, '1000000164', 1, 4),
+(165, 'tushar', 1000000165, '1000000165', 1, 4),
+(166, 'Harish', 1000000166, '1000000166', 1, 4),
+(167, 'Avinash', 1000000167, '1000000167', 1, 4),
+(168, 'Avi', 1000000168, '1000000168', 1, 4),
+(169, 'PRATEEK', 1000000169, '1000000169', 1, 4),
+(170, 'SURESH', 1000000170, '1000000170', 1, 4),
+(171, 'Ajeet', 1000000171, '1000000171', 1, 4),
+(172, 'Aman', 1000000172, '1000000172', 1, 4),
+(173, 'rishi', 1000000173, '1000000173', 1, 4),
+(174, 'Pankaj', 1000000174, '1000000174', 1, 4),
+(175, 'manu', 1000000175, '1000000175', 1, 4),
+(176, 'Lipun', 1000000176, '1000000176', 1, 4),
+(177, 'Himanshu', 1000000177, '1000000177', 1, 4),
+(178, 'Nitesh', 1000000178, '1000000178', 1, 4),
+(179, 'Arun', 1000000179, '1000000179', 1, 4),
+(180, 'Vijay', 1000000180, '1000000180', 1, 4),
+(181, 'Anand', 1000000181, '1000000181', 1, 4),
+(182, 'Sumit', 1000000182, '1000000182', 1, 4),
+(183, 'Shashank', 1000000183, '1000000183', 1, 4),
+(184, 'Dhruv', 1000000184, '1000000184', 1, 4),
+(185, 'Anirudh', 1000000185, '1000000185', 1, 4),
+(186, 'Ram', 1000000186, '1000000186', 1, 4),
+(187, 'sanchit', 1000000187, '1000000187', 1, 4),
+(188, 'Simon', 1000000188, '1000000188', 1, 4),
+(189, 'gokul', 1000000189, '1000000189', 1, 4),
+(190, 'sanjay', 1000000190, '1000000190', 1, 4),
+(191, 'Deepro', 1000000191, '1000000191', 1, 4),
+(192, 'Shekhar', 1000000192, '1000000192', 1, 4),
+(193, 'Anurag', 1000000193, '1000000193', 1, 4),
+(194, 'Akshay', 1000000194, '1000000194', 1, 4),
+(195, 'Paaus', 1000000195, '1000000195', 1, 4),
+(196, 'shaan', 1000000196, '1000000196', 1, 4),
+(197, 'Kartik', 1000000197, '1000000197', 1, 4),
+(198, 'GIRISH', 1000000198, '1000000198', 1, 4),
+(199, 'Tanya', 1000000199, '1000000199', 1, 4),
+(200, 'Nancy', 1000000200, '1000000200', 1, 4),
+(201, 'Chirag Sachdeva', 1000000201, '1000000201', 1, 1),
+(202, 'Randhir Swarnkar', 1000000202, '1000000202', 1, 1),
+(203, 'Archit Agarwal', 1000000203, '1000000203', 1, 1),
+(204, 'Abhishek Sharma', 1000000204, '1000000204', 1, 1),
+(205, 'Divyanshu Tiwari', 1000000205, '1000000205', 1, 1),
+(206, 'Arun Kumar', 1000000206, '1000000206', 1, 1),
+(207, 'Sharad Kumar', 1000000207, '1000000207', 1, 1),
+(208, 'Sarabjeet Kaur', 1000000208, '1000000208', 1, 1),
+(209, 'Avinash Gupta', 1000000209, '1000000209', 1, 1),
+(210, 'Tanmoy Paul', 1000000210, '1000000210', 1, 1),
+(211, 'Parul', 1000000211, '1000000211', 1, 1),
+(212, 'Sameer Kumar Misra', 1000000212, '1000000212', 1, 1),
+(213, 'Ashish Rana', 1000000213, '1000000213', 1, 1),
+(214, 'Rohit Birjrawat', 1000000214, '1000000214', 1, 1),
+(215, 'Deepak Singh', 1000000215, '1000000215', 1, 1),
+(216, 'Yuvraj Singh Digra', 1000000216, '1000000216', 1, 1),
+(217, 'L. Shyam Sridhar', 1000000217, '1000000217', 1, 1),
+(218, 'Tanmay Gupta', 1000000218, '1000000218', 1, 1),
+(219, 'Prachi Goyal', 1000000219, '1000000219', 1, 1),
+(220, 'Abhishek Paul', 1000000220, '1000000220', 1, 1),
+(221, 'Eric Clive R', 1000000221, '1000000221', 1, 1),
+(222, 'Mamta', 1000000222, '1000000222', 1, 1),
+(223, 'Manish Kumar', 1000000223, '1000000223', 1, 1),
+(224, 'Amit Kumar', 1000000224, '1000000224', 1, 1),
+(225, 'Divyanshu Soni', 1000000225, '1000000225', 1, 1),
+(226, 'Manjari Chkraborty', 1000000226, '1000000226', 1, 1),
+(227, 'Tanu Rana', 1000000227, '1000000227', 1, 1),
+(228, 'Radhika Kumari', 1000000228, '1000000228', 1, 1),
+(229, 'Randeep Kaur', 1000000229, '1000000229', 1, 1),
+(230, 'Anubhab Chakraborty', 1000000230, '1000000230', 1, 1),
+(231, 'Sweta Gahlot', 1000000231, '1000000231', 1, 1),
+(232, 'Kalyan Jyoti Kalita', 1000000232, '1000000232', 1, 1),
+(233, 'T. J. Logesh', 1000000233, '1000000233', 1, 1),
+(234, 'Raunak Chaurasia', 1000000234, '1000000234', 1, 1),
+(235, 'Subin P. Suresh', 1000000235, '1000000235', 1, 1),
+(236, 'K. Vasuki', 1000000236, '1000000236', 1, 1),
+(237, 'Shubham Kumar', 1000000237, '1000000237', 1, 1),
+(238, 'Akash Verma', 1000000238, '1000000238', 1, 1),
+(239, 'Deepak Kumar', 1000000239, '1000000239', 1, 1),
+(240, 'Ratan Singh Jatav', 1000000240, '1000000240', 1, 1),
+(241, 'Ritesh Soni', 1000000241, '1000000241', 1, 1),
+(242, 'Satyapriya Kujur', 1000000242, '1000000242', 1, 1),
+(243, 'Suman Das', 1000000243, '1000000243', 1, 1),
+(244, 'Shouryya Mitra', 1000000244, '1000000244', 1, 1),
+(245, 'Anup Singh', 1000000245, '1000000245', 1, 1),
+(246, 'Santanil Jana', 1000000246, '1000000246', 1, 1),
+(247, 'Sidharth', 1000000247, '1000000247', 1, 1),
+(248, 'Gurpreet Kaur', 1000000248, '1000000248', 1, 1),
+(249, 'Abhijeet Kumar', 1000000249, '1000000249', 1, 1),
+(250, 'Vishnu V.S.', 1000000250, '1000000250', 1, 1),
+(251, 'Amritpal Kaur', 1000000251, '1000000251', 1, 1),
+(252, 'Suman G.R.', 1000000252, '1000000252', 1, 1),
+(253, 'Navneet', 1000000253, '1000000253', 1, 1),
+(254, 'Ramanathan Chandrasekaran', 1000000254, '1000000254', 1, 1),
+(255, 'Dishti Gupta', 1000000255, '1000000255', 1, 1),
+(256, 'Annandaa Shankara Dash', 1000000256, '1000000256', 1, 1),
+(257, 'Rama Chaudhary', 1000000257, '1000000257', 1, 1),
+(258, 'Apoorva Anant Hegde', 1000000258, '1000000258', 1, 1),
+(259, 'Anurag Saha Roy', 1000000259, '1000000259', 1, 1),
+(260, 'Sushovan Mondal', 1000000260, '1000000260', 1, 1),
+(261, 'Ashima Rawat', 1000000261, '1000000261', 1, 1),
+(262, 'Arzoo Sharma', 1000000262, '1000000262', 1, 1),
+(263, 'Nijin C John', 1000000263, '1000000263', 1, 1),
+(264, 'Deepak Kumar', 1000000264, '1000000264', 1, 1),
+(265, 'Rajat Kapoor', 1000000265, '1000000265', 1, 1),
+(266, 'Chinta Jyothsna', 1000000266, '1000000266', 1, 1),
+(267, 'P. Jaya Bharath', 1000000267, '1000000267', 1, 1),
+(268, 'Vardhan Sangar', 1000000268, '1000000268', 1, 1),
+(269, 'Akash Kumar Gupta', 1000000269, '1000000269', 1, 3),
+(270, 'S. Saroja', 1000000270, '1000000270', 1, 3),
+(271, 'Soubhik Rakshit', 1000000271, '1000000271', 1, 3),
+(272, 'Akshay Prasad Singh', 1000000272, '1000000272', 1, 3),
+(273, 'Chimed Palden', 1000000273, '1000000273', 1, 3),
+(274, 'Shubham Kumar', 1000000274, '1000000274', 1, 3),
+(275, 'Uzair Khan', 1000000275, '1000000275', 1, 3),
+(276, 'Varu Bharadwaj', 1000000276, '1000000276', 1, 3),
+(277, 'Garima Dhanania', 1000000277, '1000000277', 1, 3),
+(278, 'Harsharn Kaur', 1000000278, '1000000278', 1, 3),
+(279, 'Nisha Chetna Sastry', 1000000279, '1000000279', 1, 3),
+(280, 'Rajesh Shreedhar Bhat', 1000000280, '1000000280', 1, 2),
+(281, 'Nidhi Sridhar', 1000000281, '1000000281', 1, 2),
+(282, 'Jay Panchal', 1000000282, '1000000282', 1, 2),
+(283, 'Debarati Das', 1000000283, '1000000283', 1, 2),
+(284, 'Abhishek Sachan', 1000000284, '1000000284', 1, 2),
+(285, 'Shivam Srivastava', 1000000285, '1000000285', 1, 2),
+(286, 'Ranjan Kumar', 1000000286, '1000000286', 1, 2),
+(287, 'Harsh Gangwar', 1000000287, '1000000287', 1, 2),
+(288, 'Vishal Sharma', 1000000288, '1000000288', 1, 2),
+(289, 'Sundeep Kumar', 1000000289, '1000000289', 1, 2),
+(290, 'Vivek Yadav', 1000000290, '1000000290', 1, 2),
+(291, 'Vandana Gupta', 1000000291, '1000000291', 1, 2),
+(292, 'anubhav singh', 1000000292, '1000000292', 1, 2),
+(293, 'akash tewari', 1000000293, '1000000293', 1, 2),
+(294, 'saloni shrivastava', 1000000294, '1000000294', 1, 2),
+(295, 'Gaurav Juneja', 1000000295, '1000000295', 1, 2),
+(296, 'Sabeena Yasmin Hera', 1000000296, '1000000296', 1, 2),
+(297, 'prateek jain', 1000000297, '1000000297', 1, 2),
+(298, 'Pranab Mohan', 1000000298, '1000000298', 1, 2),
+(299, 'maneesha yadav', 1000000299, '1000000299', 1, 2),
+(300, 'Akanksha', 1000000300, '1000000300', 1, 2),
+(301, 'Shivani Singh', 1000000301, '1000000301', 1, 2),
+(302, 'Devyani Gupta', 1000000302, '1000000302', 1, 2),
+(303, 'Indra kumar verma', 1000000303, '1000000303', 1, 2),
+(304, 'Aakash Chandhoke', 1000000304, '1000000304', 1, 2),
+(305, 'Akash Jain', 1000000305, '1000000305', 1, 4),
+(306, 'Akash Mittal', 1000000306, '1000000306', 1, 4),
+(307, 'Nawaz Akhtar', 1000000307, '1000000307', 1, 4),
+(308, 'Vrinda Mittal', 1000000308, '1000000308', 1, 4),
+(309, 'Sukriti Agarwal', 1000000309, '1000000309', 1, 4),
+(310, 'Surabhi Singh', 1000000310, '1000000310', 1, 4),
+(311, 'Vicky Chaprana', 1000000311, '1000000311', 1, 4),
+(312, 'Yashaswi Pratap Singh', 1000000312, '1000000312', 1, 4),
+(313, 'Sourabh Malhotra', 1000000313, '1000000313', 1, 4),
+(314, 'HARENDRA VARSHNEY', 1000000314, '1000000314', 1, 4),
+(315, 'Priyank Bahl', 1000000315, '1000000315', 1, 4),
+(316, 'Shivam Batra', 1000000316, '1000000316', 1, 4),
+(317, 'Bhavana Patel', 1000000317, '1000000317', 1, 4),
+(318, 'Tanvi Singhal', 1000000318, '1000000318', 1, 4),
+(319, 'Tapsi Gupta', 1000000319, '1000000319', 1, 4),
+(320, 'Shaivya Singh', 1000000320, '1000000320', 1, 4),
+(321, 'Ritesh Gupta', 1000000321, '1000000321', 1, 4),
+(322, 'Sparsh Khandelwal', 1000000322, '1000000322', 1, 4),
+(323, 'Prince ok Bharti', 1000000323, '1000000323', 1, 4),
+(324, 'Yugam Soni', 1000000324, '1000000324', 1, 4),
+(325, 'Rahul pankaj', 1000000325, '1000000325', 1, 4),
+(326, 'Rohi Gupta', 1000000326, '1000000326', 1, 4),
+(327, 'Saksham bharti', 1000000327, '1000000327', 1, 4),
+(328, 'Farhan Ansari', 1000000328, '1000000328', 1, 4),
+(329, 'ajit chuahna', 1000000329, '1000000329', 1, 4),
+(330, 'krati saxena', 1000000330, '1000000330', 1, 4),
+(331, 'salil shukla', 1000000331, '1000000331', 1, 4),
+(332, 'Sarush Goel', 1000000332, '1000000332', 1, 4),
+(333, 'Rajat Mittal', 1000000333, '1000000333', 1, 4),
+(334, 'Utkarsh gupta', 1000000334, '1000000334', 1, 4),
+(335, 'Sachin mishra', 1000000335, '1000000335', 1, 4),
+(336, 'Prakhar Arya', 1000000336, '1000000336', 1, 4),
+(337, 'Sagar tyagi', 1000000337, '1000000337', 1, 4),
+(338, 'Sidhant kapoor', 1000000338, '1000000338', 1, 4),
+(339, 'Saumya Arya', 1000000339, '1000000339', 1, 4),
+(340, 'shivam dixit', 1000000340, '1000000340', 1, 4),
+(341, 'Mohit Kumar', 1000000341, '1000000341', 1, 4),
+(342, 'Raju Kumar', 1000000342, '1000000342', 1, 4),
+(343, 'Hare Murari', 1000000343, '1000000343', 1, 4),
+(344, 'Tanu Kardam', 1000000344, '1000000344', 1, 4),
+(345, 'Siddharth Singh Taragi', 1000000345, '1000000345', 1, 4),
+(346, 'Jaishant Bharti', 1000000346, '1000000346', 1, 4),
+(347, 'sujata shakya', 1000000347, '1000000347', 1, 4),
+(348, 'Apoorva Sharma', 1000000348, '1000000348', 1, 4),
+(349, 'Rashmi Rani', 1000000349, '1000000349', 1, 4),
+(350, 'riya kathil', 1000000350, '1000000350', 1, 4),
+(351, 'Naveen Kumar', 1000000351, '1000000351', 1, 4),
+(352, 'Aakash Chandhoke', 1000000352, '1000000352', 1, 4),
+(353, 'Anubhav Vashishtha', 1000000353, '1000000353', 1, 4),
+(354, 'Anurag Shukla', 1000000354, '1000000354', 1, 4),
+(355, 'Ankur Goel', 1000000355, '1000000355', 1, 4),
+(356, 'Anchit Srivastava', 1000000356, '1000000356', 1, 4),
+(357, 'Farhan Ansari', 1000000357, '1000000357', 1, 4),
+(358, 'Harsh Gangwar', 1000000358, '1000000358', 1, 4),
+(359, 'Pragati Singh', 1000000359, '1000000359', 1, 4),
+(360, 'Gaurav Juneja', 1000000360, '1000000360', 1, 4),
+(361, 'Devyani Gupta', 1000000361, '1000000361', 1, 4),
+(362, 'Akash Mittal', 1000000362, '1000000362', 1, 4),
+(363, 'Ayushi Srivastava', 1000000363, '1000000363', 1, 4),
+(364, 'Amandeep Sone', 1000000364, '1000000364', 1, 4),
+(365, 'Indra Kumar Verma', 1000000365, '1000000365', 1, 4),
+(366, 'Deeksha agrawal', 1000000366, '1000000366', 1, 4),
+(367, 'Anuj Panw', 1000000367, '1000000367', 1, 4),
+(368, 'Abhishek Bajpai', 1000000368, '1000000368', 1, 4),
+(369, 'Siddhant Yadav', 1000000369, '1000000369', 1, 4),
+(370, 'Nikhil Verma', 1000000370, '1000000370', 1, 4),
+(371, 'Arman Ahmed', 1000000371, '1000000371', 1, 4),
+(372, 'Ankur Gupta', 1000000372, '1000000372', 1, 4),
+(373, 'Riddhi Agarwal', 1000000373, '1000000373', 1, 4),
+(374, 'Gautam lal', 1000000374, '1000000374', 1, 4),
+(375, 'Akanksha', 1000000375, '1000000375', 1, 4),
+(376, 'Akash Tewari', 1000000376, '1000000376', 1, 1),
+(377, 'Vibha Chugh', 1000000377, '1000000377', 1, 1),
+(378, 'Maneesha Yadav', 1000000378, '1000000378', 1, 1),
+(379, 'Devansh Kumar', 1000000379, '1000000379', 1, 1),
+(380, 'Deshraj', 1000000380, '1000000380', 1, 1),
+(381, 'Kshitij Tiwari', 1000000381, '1000000381', 1, 1),
+(382, 'Pranab Mohan', 1000000382, '1000000382', 1, 1),
+(383, 'Nishi Agarwal', 1000000383, '1000000383', 1, 1),
+(384, 'Anubhav singh', 1000000384, '1000000384', 1, 1),
+(385, 'Pankhuri Rastogi', 1000000385, '1000000385', 1, 1),
+(386, 'Neha Singh', 1000000386, '1000000386', 1, 1),
+(387, 'Prakhar Goel', 1000000387, '1000000387', 1, 1),
+(388, 'Nancy Jaiswal', 1000000388, '1000000388', 1, 1),
+(389, 'Nawaz Akhtar', 1000000389, '1000000389', 1, 1),
+(390, 'Akash Jain', 1000000390, '1000000390', 1, 1),
+(391, 'Anukriti Kumar', 1000000391, '1000000391', 1, 1),
+(392, 'vishal vikram singh', 1000000392, '1000000392', 1, 1),
+(393, 'Anurag Garg', 1000000393, '1000000393', 1, 1),
+(394, 'Anshul Verma', 1000000394, '1000000394', 1, 1),
+(395, 'Ashish Kushwaha', 1000000395, '1000000395', 1, 1),
+(396, 'Isha Singh', 1000000396, '1000000396', 1, 1),
+(397, 'Aviral Yadav', 1000000397, '1000000397', 1, 1),
+(398, 'Dushyant Kumar Bharti', 1000000398, '1000000398', 1, 1),
+(399, 'Kunal Singh Rajput', 1000000399, '1000000399', 1, 1),
+(400, 'Akash Inani', 1000000400, '1000000400', 1, 1),
+(401, 'Pragya Gupta', 1000000401, '1000000401', 1, 1),
+(402, 'Divyansh Goel', 1000000402, '1000000402', 1, 1),
+(403, 'Amar Kant Yadav', 1000000403, '1000000403', 1, 1),
+(404, 'Mansi Singhal', 1000000404, '1000000404', 1, 1),
+(405, 'sachin', 1000000405, '1000000405', 1, 1),
+(406, 'Sumit kumar', 1000000406, '1000000406', 1, 1),
+(407, 'Anurag Sharma', 1000000407, '1000000407', 1, 1),
+(408, 'Pradeep kumar', 1000000408, '1000000408', 1, 1),
+(409, 'Mukesh Kumar', 1000000409, '1000000409', 1, 1),
+(410, 'Prashant Chaudhary', 1000000410, '1000000410', 1, 1),
+(411, 'Kushagra Deep Choudhary', 1000000411, '1000000411', 1, 1),
+(412, 'Kartik Mittal', 1000000412, '1000000412', 1, 1),
+(413, 'Krati Saxena', 1000000413, '1000000413', 1, 1),
+(414, 'Anant Garg', 1000000414, '1000000414', 1, 1),
+(415, 'Nikhil Srivastava', 1000000415, '1000000415', 1, 2),
+(416, 'Chahat Mourya', 1000000416, '1000000416', 1, 2),
+(417, 'Krity Jain', 1000000417, '1000000417', 1, 2),
+(418, 'Amit Ranjan', 1000000418, '1000000418', 1, 2),
+(419, 'Ritwik Jain', 1000000419, '1000000419', 1, 2),
+(420, 'Saurabh Vishwakarma', 1000000420, '1000000420', 1, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subjects`
 --
 
 CREATE TABLE IF NOT EXISTS `subjects` (
-  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `id` int(4) NOT NULL,
   `department_id` int(4) NOT NULL,
   `subject_code` varchar(10) NOT NULL,
   `subject_name` varchar(120) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `internal` int(3) NOT NULL,
+  `external` int(3) NOT NULL,
+  `total` int(3) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subjects`
 --
 
-INSERT INTO `subjects` (`id`, `department_id`, `subject_code`, `subject_name`) VALUES
-(1, 1, 'ECS-701', 'Distributed Systems'),
-(2, 1, 'ECS-501', 'Test Subject');
-
--- --------------------------------------------------------
+INSERT INTO `subjects` (`id`, `department_id`, `subject_code`, `subject_name`, `internal`, `external`, `total`) VALUES
+(1, 1, 'AS101', 'Engineering Mathematics', 50, 100, 150),
+(2, 1, 'AS102', 'Engineering Physics', 25, 80, 105),
+(3, 1, 'AS103', 'Engineering Chemistry', 25, 80, 105),
+(4, 1, 'AS104', 'Introduction to Bio Science', 20, 80, 100),
+(5, 1, 'CS101', 'Computer Programming', 30, 100, 130),
+(6, 1, 'EE101', 'Electrical Engineering', 30, 100, 130),
+(7, 1, 'AS102P', 'Engineering Physics Lab', 15, 30, 45),
+(8, 1, 'AS103P', 'Engineering Chemistry Lab', 15, 30, 45),
+(9, 1, 'AS105P', 'Professional Communication Lab', 20, 30, 50),
+(10, 1, ' CS101P', 'Computer Programming Lab', 15, 30, 45),
+(11, 1, 'EE101P', 'ELectrical Engineering Lab', 15, 30, 45),
+(12, 1, 'GP101', 'General Proficiency', 50, 0, 50),
+(13, 1, 'AS201', 'Engineering Mathematics-II', 50, 100, 150),
+(14, 1, 'AS202', 'Engineering Physics-II', 25, 80, 105),
+(15, 1, 'CE201', 'Energy, Environment & Ecology', 20, 80, 100),
+(16, 1, 'EC201', 'Electronics Engineering', 30, 100, 130),
+(17, 1, 'ME201', 'Engineering Mechanics', 30, 100, 130),
+(18, 1, 'ME202', 'Manufacturing Practices', 25, 50, 75),
+(19, 1, 'AS202P', 'Engineering Physics Lab', 15, 30, 45),
+(20, 1, 'CE202P', 'Computer Aided Engineering Graphics Lab', 20, 30, 50),
+(21, 1, 'EC201P', 'Electronics Engineering Lab', 15, 30, 45),
+(22, 1, 'ME201P', 'Engineering Mechanics Lab', 15, 30, 45),
+(23, 1, 'ME202P', 'Manufacturing Practices Lab', 25, 50, 75),
+(24, 1, 'GP201', 'General Proficiency', 50, 0, 50),
+(25, 1, 'AS301', 'Engineering Mathematics-III', 50, 100, 150),
+(26, 1, 'AS306', 'Technical Writing', 20, 80, 100),
+(27, 1, 'CS301', 'Data Structures', 30, 100, 130),
+(28, 1, 'EC-302', 'Digital Design', 30, 100, 130),
+(29, 1, 'EE305', 'Sensor and Instrumentation', 30, 100, 130),
+(30, 1, 'CS301P', 'Data Structures Lab', 15, 30, 45),
+(31, 1, 'EC302P', 'Digital Design Lab', 15, 30, 45),
+(32, 1, 'EE305P', 'Sensor and Instrumentation Lab', 15, 30, 45),
+(33, 1, 'CS302', 'Discrete Structures', 30, 100, 130),
+(34, 1, 'CS302P', 'Discrete Structures Lab', 15, 30, 45),
+(35, 1, 'GP301', 'General Proficiency', 50, 0, 50),
+(36, 1, 'AS402', 'Basics of System Modelling and Simulation', 50, 100, 150),
+(37, 1, 'CS401', 'Computer Organization', 30, 100, 130),
+(38, 1, 'CS402', 'Data Base Management Systems', 30, 100, 130),
+(39, 1, 'CS403', 'Object Oriented Programming with C++', 30, 100, 130),
+(40, 1, 'CS404', 'Theory of Computation', 30, 100, 130),
+(41, 1, 'HU401', 'Human Behaviour', 20, 80, 100),
+(42, 1, 'CS401P', 'Computer Organization Lab', 15, 30, 45),
+(43, 1, 'CS402P', 'Data Base Management Systems Lab', 15, 30, 45),
+(44, 1, 'CS403P', 'Object Oriented Programming with C++ Lab', 15, 30, 45),
+(45, 1, 'CS404P', 'Theory of Computation Lab', 15, 30, 45),
+(46, 1, 'GP401', 'General Proficiency', 50, 0, 50),
+(47, 1, 'EHU501', 'Engineering and Managerial Economics', 50, 100, 150),
+(48, 1, 'ECS504', 'Computer Graphics', 25, 50, 75),
+(49, 1, 'ECS501', 'Operating Syatem', 50, 100, 150),
+(50, 1, 'ECS502', 'Design and Analysis of Algorithms', 50, 100, 150),
+(51, 1, 'ECS503', 'Object Oriented Techniques', 50, 100, 150),
+(52, 1, 'ECS505', 'Graph Theory', 25, 50, 75),
+(53, 1, 'ECS551', 'Operating Syatem Lab', 25, 25, 50),
+(54, 1, 'ECS552', 'Algorithms Lab', 25, 25, 50),
+(55, 1, 'ECS553', 'Object Oriented Techniques Lab', 25, 25, 50),
+(56, 1, 'ECS554', 'Computer Graphics Lab', 25, 25, 50),
+(57, 1, 'GP501', 'General Proficiency', 50, 0, 50),
+(58, 1, 'EHU601', 'Industrial Management', 50, 100, 150),
+(59, 1, 'ECS604', 'Web Technology', 25, 50, 75),
+(60, 1, 'ECS601', 'Computer Network', 50, 100, 150),
+(61, 1, 'ECS602', 'Software Engineering', 50, 100, 150),
+(62, 1, 'ECS603', 'Compiler Design', 50, 100, 150),
+(63, 1, 'EIT505', 'Information Security and Cyber Laws', 25, 50, 75),
+(64, 1, 'ECS651', 'Computer Network Lab', 25, 25, 50),
+(65, 1, 'ECS652', 'Web Technology Lab', 25, 25, 50),
+(66, 1, 'ECS653', 'Compiler Design Lab', 25, 25, 50),
+(67, 1, 'ECS654', 'Seminar', 50, 0, 50),
+(68, 1, 'GP601', 'General Proficiency', 50, 0, 50),
+(69, 1, 'EOE070-074', 'Open Elective-I', 50, 100, 150),
+(70, 1, 'ECS-701', 'Distributed Systems', 50, 100, 150),
+(71, 1, 'ECS-702', 'Digital Image Processing', 50, 100, 150),
+(72, 1, '', 'CS-Elective-I', 50, 100, 150),
+(73, 1, '', 'CS-Elective-II', 50, 100, 150),
+(74, 1, 'ECS-751', 'Distributed Systems Lab', 25, 25, 50),
+(75, 1, 'ECS-752', 'Digital Image processing Lab', 25, 25, 50),
+(76, 1, 'ECS-753', 'Project', 50, 0, 50),
+(77, 1, 'ECS-754', 'Industrial Training', 50, 0, 50),
+(78, 1, 'GP-701', 'General Proficiency', 50, 0, 50),
+(79, 1, 'EOE-081-08', 'Open Elective-II', 50, 100, 150),
+(80, 1, 'ECS-801', 'Artificial Intelligence', 50, 100, 150),
+(81, 1, '', 'CS-Elective-III', 50, 100, 150),
+(82, 1, '', 'CS-Elective-IV', 50, 100, 150),
+(83, 1, 'ECS-851', ' Artificial Intelligence Lab', 25, 25, 50),
+(84, 1, 'ECS-852', 'Project', 100, 200, 300),
+(85, 1, 'GP-801', 'General Proficiency', 50, 0, 50);
 
 --
--- Table structure for table `subjects_to_batches`
---
-
-CREATE TABLE IF NOT EXISTS `subjects_to_batches` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
-  `subject_id` int(3) NOT NULL,
-  `batch_id` int(3) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `subject_id` (`subject_id`),
-  KEY `batch_id` (`batch_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `subjects_to_batches`
---
-
-INSERT INTO `subjects_to_batches` (`id`, `subject_id`, `batch_id`) VALUES
-(1, 1, 1);
-
---
--- Constraints for dumped tables
+-- Indexes for dumped tables
 --
 
 --
--- Constraints for table `subjects_to_batches`
+-- Indexes for table `batches`
 --
-ALTER TABLE `subjects_to_batches`
-  ADD CONSTRAINT `subjects_to_batches_ibfk_1` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`),
-  ADD CONSTRAINT `subjects_to_batches_ibfk_2` FOREIGN KEY (`batch_id`) REFERENCES `batches` (`id`);
+ALTER TABLE `batches`
+  ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `batches`
+--
+ALTER TABLE `batches`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=421;
+--
+-- AUTO_INCREMENT for table `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=86;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

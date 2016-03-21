@@ -54,7 +54,10 @@
 
 
                 <div class="col-md-6">
-                    <h5>STUDENTS INVOLVED</h5>
+                    <h6>Average Internal Marks: <?php echo $avgInternalScore[0]['internal']; ?></h6>
+                </div>
+                <div class="col-md-6">
+                    <h6>Average External Marks: <?php echo $avgExternalScore[0]['external']; ?></h6>
                 </div>
 
 

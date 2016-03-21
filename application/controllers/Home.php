@@ -59,6 +59,15 @@ class Home extends CI_Controller {
 
 	public function subject_analysis()
 	{
+		$id = 1;
+		$this->load->library('Data_lib');
+		$data['subject_details'] =  $this->data_lib->getSubjectDetails($id);
+		$data['maxInternalScore'] = $this->data_lib->getMaxInternalScore($id);
+		$data['minInternalScore'] = $this->data_lib->getMinInternalScore($id);
+		$data['avgInternalScore'] = $this->data_lib->getAvgInternalScore($id);
+		$data['maxExternalScore'] = $this->data_lib->getMaxExternalScore($id);
+		$data['minExternalScore'] = $this->data_lib->getMinExternalScore($id);
+		$data['avgExternalScore'] = $this->data_lib->getAvgExternalScore($id);
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;

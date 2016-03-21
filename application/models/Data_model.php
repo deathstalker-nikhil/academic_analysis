@@ -33,6 +33,12 @@ class Data_model extends CI_Model {
 		return $this->db->insert('departments',$data);
 	}
 
+	public function getSubjectDetails($id)
+	{
+		$result = $this->db->get_where('subjects',array('id' => $id));
+		return $result->result_array();
+	}
+
 	public function getDepartments()
 	{
 		$result = $this->db->get('departments');
@@ -54,6 +60,48 @@ class Data_model extends CI_Model {
 	public function getSubjects()
 	{
 		$result = $this->db->get('subjects');
+		return $result->result_array();
+	}
+
+	public function getMaxInternalScore($id)
+	{
+		$this->db->select_max('internal');
+		$result = $this->db->get_where('scores',array('subject_id' => $id));
+		return $result->result_array();
+	}
+
+	public function getMinInternalScore($id)
+	{
+		$this->db->select_min('internal');
+		$result = $this->db->get_where('scores',array('subject_id' => $id));
+		return $result->result_array();
+	}
+
+	public function getAvgInternalScore($id)
+	{
+		$this->db->select_avg('internal');
+		$result = $this->db->get_where('scores',array('subject_id' => $id));
+		return $result->result_array();
+	}
+
+	public function getMaxExternalScore($id)
+	{
+		$this->db->select_max('external');
+		$result = $this->db->get_where('scores',array('subject_id' => $id));
+		return $result->result_array();
+	}
+
+	public function getMinExternalScore($id)
+	{
+		$this->db->select_min('external');
+		$result = $this->db->get_where('scores',array('subject_id' => $id));
+		return $result->result_array();
+	}
+
+	public function getAvgExternalScore($id)
+	{
+		$this->db->select_avg('external');
+		$result = $this->db->get_where('scores',array('subject_id' => $id));
 		return $result->result_array();
 	}
 

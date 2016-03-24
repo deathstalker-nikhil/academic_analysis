@@ -51,13 +51,26 @@
             <div class="col-md-9">
 
                 <h4>Subject Analysis for <strong>Design and Analysis of Algorithm</strong></h4>
-
-
+                <div class="col-md-12">
+                    <h6>Total Appeared Students: <?php echo $totalAttempts; ?></h6>
+                </div>
+                <div class="col-md-6">
+                    <h6>Minimum Internal Marks Scored: <?php echo $minInternalScore[0]['internal']; ?></h6>
+                </div>
+                <div class="col-md-6">
+                    <h6>Minimum External Marks Scored: <?php echo $minExternalScore[0]['external']; ?></h6>
+                </div>
                 <div class="col-md-6">
                     <h6>Average Internal Marks: <?php echo $avgInternalScore[0]['internal']; ?></h6>
                 </div>
                 <div class="col-md-6">
                     <h6>Average External Marks: <?php echo $avgExternalScore[0]['external']; ?></h6>
+                </div>
+                <div class="col-md-6">
+                    <h6>Maximum Internal Marks Scored: <?php echo $maxInternalScore[0]['internal']; ?></h6>
+                </div>
+                <div class="col-md-6">
+                    <h6>Maximum External Marks Scored: <?php echo $maxExternalScore[0]['external']; ?></h6>
                 </div>
 
 

@@ -102,6 +102,13 @@ class Data_lib {
 		return $CI->data->getAvgExternalScore($id);
 	}
 
+	public function getTotalAttempts($id)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getTotalAttempts($id);
+	}
+
 	public function getStudents()
 	{
 		$CI = & get_instance();

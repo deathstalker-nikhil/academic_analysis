@@ -105,4 +105,12 @@ class Data_model extends CI_Model {
 		return $result->result_array();
 	}
 
+	public function getTotalAttempts($id)
+	{
+
+		$this->db->where('subject_id', $id);
+		$result = $this->db->count_all_results('scores');
+		return $result;
+	}
+
 }

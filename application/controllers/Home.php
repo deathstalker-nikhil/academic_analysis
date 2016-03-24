@@ -68,6 +68,7 @@ class Home extends CI_Controller {
 		$data['maxExternalScore'] = $this->data_lib->getMaxExternalScore($id);
 		$data['minExternalScore'] = $this->data_lib->getMinExternalScore($id);
 		$data['avgExternalScore'] = $this->data_lib->getAvgExternalScore($id);
+		$data['totalAttempts'] = $this->data_lib->getTotalAttempts($id);
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;

@@ -109,6 +109,20 @@ class Data_lib {
 		return $CI->data->getTotalAttempts($id);
 	}
 
+	public function getInternalScores($id)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getInternalScores($id);
+	}
+
+	public function getExternalScores($id)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getExternalScores($id);
+	}
+
 	public function getStudents()
 	{
 		$CI = & get_instance();

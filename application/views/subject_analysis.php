@@ -72,12 +72,15 @@
                 <div class="col-md-6">
                     <h6>Maximum External Marks Scored: <?php echo $maxExternalScore[0]['external']; ?></h6>
                 </div>
-
-
-
-
-            </div>
-
+<br>
+<h6>Internal Score Analysis</h6>
+<svg id="internalVisualisation" width="1000" height="500"></svg>
+<br>
+<h6>External Score Analysis</h6>
+    <svg id="externalVisualisation" width="1000" height="500"></svg>
+          </div>
+<br>
+<div style="width: 100%;" id="chart"></div>
 
     </div>
 </div>
@@ -87,25 +90,204 @@
 
 <script src="/assets/js/jquery.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
-
-     <script src="/assets/js/jquery.dataTables.min.js"></script>
-    <script src="/assets/js/dataTables.bootstrap.min.js"></script>
-
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script src="/assets/js/classie.js"></script>
-<script src="/assets/js/cbpAnimatedHeader.js"></script>
-<script src="/assets/js/jqBootstrapValidation.js"></script>
-<script src="/assets/js/contact_me.js"></script>
-<script src="/assets/js/agency.js"></script>
-
-<script src="/assets/js/custom.js"></script>
+<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script>
-$(document).ready(function() {
-$('#dataTables-example').DataTable({
-      responsive: true
-});
-});
+InitChart();
+
+function InitChart() {
+
+  var lineData = [	<?php foreach ($internalScores as $key => $value) {
+			echo "{'x': ";
+			echo $value['internal'];
+			echo ", 'y' : ";
+			echo $value['numberOfStudents'];
+			echo "},";
+		} ?>];
+
+  var vis = d3.select("#internalVisualisation"),
+    WIDTH = 800,
+    HEIGHT = 400,
+    MARGINS = {
+      top: 20,
+      right: 20,
+      bottom: 20,
+      left: 50
+    },
+    xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function (d) {
+        return d.x;
+      }),
+      d3.max(lineData, function (d) {
+        return d.x;
+      })
+    ]),
+
+    yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(lineData, function (d) {
+        return d.y;
+      }),
+      d3.max(lineData, function (d) {
+        return d.y;
+      })
+    ]),
+
+    xAxis = d3.svg.axis()
+      .scale(xRange)
+      .tickSize(5)
+      .tickSubdivide(true),
+
+    yAxis = d3.svg.axis()
+      .scale(yRange)
+      .tickSize(5)
+      .orient("left")
+      .tickSubdivide(true);
+
+
+  vis.append("svg:g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+    .call(xAxis);
+
+  vis.append("svg:g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+    .call(yAxis);
+
+  var lineFunc = d3.svg.line()
+  .x(function (d) {
+    return xRange(d.x);
+  })
+  .y(function (d) {
+    return yRange(d.y);
+  })
+  .interpolate('linear');
+
+vis.append("svg:path")
+  .attr("d", lineFunc(lineData))
+  .attr("stroke", "blue")
+  .attr("stroke-width", 2)
+  .attr("fill", "none");
+
+}
 </script>
+<script>
+InitChart();
+
+function InitChart() {
+
+  var lineData = [	<?php foreach ($externalScores as $key => $value) {
+			echo "{'x': ";
+			echo $value['external'];
+			echo ", 'y' : ";
+			echo $value['numberOfStudents'];
+			echo "},";
+		} ?>];
+
+  var vis = d3.select("#externalVisualisation"),
+    WIDTH = 800,
+    HEIGHT = 400,
+    MARGINS = {
+      top: 20,
+      right: 20,
+      bottom: 20,
+      left: 50
+    },
+    xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function (d) {
+        return d.x;
+      }),
+      d3.max(lineData, function (d) {
+        return d.x;
+      })
+    ]),
+
+    yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(lineData, function (d) {
+        return d.y;
+      }),
+      d3.max(lineData, function (d) {
+        return d.y;
+      })
+    ]),
+
+    xAxis = d3.svg.axis()
+      .scale(xRange)
+      .tickSize(5)
+      .tickSubdivide(true),
+
+    yAxis = d3.svg.axis()
+      .scale(yRange)
+      .tickSize(5)
+      .orient("left")
+      .tickSubdivide(true);
+
+
+  vis.append("svg:g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+    .call(xAxis);
+
+  vis.append("svg:g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+    .call(yAxis);
+
+  var lineFunc = d3.svg.line()
+  .x(function (d) {
+    return xRange(d.x);
+  })
+  .y(function (d) {
+    return yRange(d.y);
+  })
+  .interpolate('linear');
+
+vis.append("svg:path")
+  .attr("d", lineFunc(lineData))
+  .attr("stroke", "blue")
+  .attr("stroke-width", 2)
+  .attr("fill", "none");
+
+}
+</script>
+<script>
+     (function(d3) {
+       'use strict';
+
+       var dataset = [
+         { label: 'Abulia', count: 10 },
+         { label: 'Betelgeuse', count: 20 },
+         { label: 'Cantaloupe', count: 30 },
+         { label: 'Dijkstra', count: 40 }
+       ];
+
+       var width = 360;
+       var height = 360;
+       var radius = Math.min(width, height) / 2;
+
+       var color = d3.scale.category20b();
+
+       var svg = d3.select('#chart')
+         .append('svg')
+         .attr('width', width)
+         .attr('height', height)
+         .append('g')
+         .attr('transform', 'translate(' + (width / 2) +
+           ',' + (height / 2) + ')');
+
+       var arc = d3.svg.arc()
+         .outerRadius(radius);
+
+       var pie = d3.layout.pie()
+         .value(function(d) { return d.count; })
+         .sort(null);
+
+       var path = svg.selectAll('path')
+         .data(pie(dataset))
+         .enter()
+         .append('path')
+         .attr('d', arc)
+         .attr('fill', function(d, i) {
+           return color(d.data.label);
+         });
+
+     })(window.d3);
+   </script>
 
 </body>
 </html>

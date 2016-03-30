@@ -62,7 +62,21 @@ class Data_model extends CI_Model {
 		$result = $this->db->get('subjects');
 		return $result->result_array();
 	}
+////
+	public function getInternalScores($id)
+	{
+		$SQL = "SELECT `internal`,COUNT(`internal`) AS numberOfStudents FROM `scores` WHERE `subject_id`='$id' GROUP BY `internal`";
+		$query = $this->db->query($SQL);
+	return $query->result_array();
+	}
 
+	public function getExternalScores($id)
+	{
+		$SQL = "SELECT `external`,COUNT(`external`) AS numberOfStudents FROM `scores` WHERE `subject_id`='$id' GROUP BY `external`";
+		$query = $this->db->query($SQL);
+	return $query->result_array();
+	}
+/////
 	public function getMaxInternalScore($id)
 	{
 		$this->db->select_max('internal');

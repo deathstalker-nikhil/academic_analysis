@@ -16,6 +16,30 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+<style>
+.axis path, .axis line
+      {
+          fill: none;
+          stroke: #777;
+          shape-rendering: crispEdges;
+      }
+
+      .axis text
+      {
+          font-family: 'Arial';
+          font-size: 13px;
+      }
+      .tick
+      {
+          stroke-dasharray: 1, 2;
+      }
+      .bar
+      {
+          fill: FireBrick;
+      }
+
+     
+</style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,7 +92,7 @@
                             <a class="page-scroll" href="#">Home</a>
 
                         </li>
-                        
+
 
                 </ul>
             </div>

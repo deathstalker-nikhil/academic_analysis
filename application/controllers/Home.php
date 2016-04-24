@@ -71,6 +71,8 @@ class Home extends CI_Controller {
 		$data['totalAttempts'] = $this->data_lib->getTotalAttempts($id);
 		$data['internalScores'] = $this->data_lib->getInternalScores($id);
 		$data['externalScores'] = $this->data_lib->getExternalScores($id);
+		$data['externalBackLogs'] = $this->data_lib->getExternalBackLogs($id);
+		$data['externalBackLogs'] = $data['externalBackLogs'][0];
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;

@@ -77,6 +77,15 @@ class Data_model extends CI_Model {
 	return $query->result_array();
 	}
 /////
+
+public function getExternalBackLogs($id)
+{
+	$SQL = "SELECT COUNT(`external`) AS numberOfBackLogs FROM `scores` WHERE `subject_id`='$id' AND `external`<30";
+	$query = $this->db->query($SQL);
+return $query->result_array();
+}
+
+
 	public function getMaxInternalScore($id)
 	{
 		$this->db->select_max('internal');

@@ -250,10 +250,8 @@ vis.append("svg:path")
        'use strict';
 
        var dataset = [
-         { label: 'Abulia', count: 10 },
-         { label: 'Betelgeuse', count: 20 },
-         { label: 'Cantaloupe', count: 30 },
-         { label: 'Dijkstra', count: 40 }
+         { label: 'Abulia', count: 29 },
+         { label: 'Betelgeuse', count: 71 }
        ];
 
        var width = 360;

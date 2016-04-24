@@ -123,6 +123,13 @@ class Data_lib {
 		return $CI->data->getExternalScores($id);
 	}
 
+	public function getExternalBackLogs($id)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getExternalBackLogs($id);
+	}
+
 	public function getStudents()
 	{
 		$CI = & get_instance();

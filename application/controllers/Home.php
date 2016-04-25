@@ -13,6 +13,7 @@ class Home extends CI_Controller {
 		$this->load->helper(array('url'));
 		$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 		$data['csrf_token'] = $this->security->get_csrf_hash();
+		$this->load->helper('regression');
 		$this->head =  $this->load->view('common/head',$data,true);
 		$this->foot =  $this->load->view('common/foot',$data,true);
 		$this->left =  $this->load->view('common/left',$data,true);
@@ -36,16 +37,6 @@ class Home extends CI_Controller {
 		$this->load->view('add_scores', $data);
 	}
 
-	public function add_subject_to_batch()
-	{
-		$data['head'] = $this->head;
-		$data['foot'] = $this->foot;
-		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
-		$data['batches'] =  $this->data_lib->getBatches();
-		$data['subjects'] =  $this->data_lib->getSubjects();
-		$this->load->view('add_subject_to_batch', $data);
-	}
 
 	public function departments()
 	{
@@ -57,9 +48,9 @@ class Home extends CI_Controller {
 		$this->load->view('departments', $data);
 	}
 
-	public function subject_analysis()
+	public function subject_analysis($id='')
 	{
-		$id = 1;
+
 		$this->load->library('Data_lib');
 		$data['subject_details'] =  $this->data_lib->getSubjectDetails($id);
 		$data['maxInternalScore'] = $this->data_lib->getMaxInternalScore($id);
@@ -71,13 +62,31 @@ class Home extends CI_Controller {
 		$data['totalAttempts'] = $this->data_lib->getTotalAttempts($id);
 		$data['internalScores'] = $this->data_lib->getInternalScores($id);
 		$data['externalScores'] = $this->data_lib->getExternalScores($id);
-		$data['externalBackLogs'] = $this->data_lib->getExternalBackLogs($id);
-		$data['externalBackLogs'] = $data['externalBackLogs'][0];
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
 		$this->load->view('subject_analysis', $data);
 	}
+
+	public function subject_analysis_batch($id='', $batch='')
+	{
+		$this->load->library('Data_lib');
+		$data['subject_details'] =  $this->data_lib->getSubjectDetails($id);
+		$data['maxInternalScore'] = $this->data_lib->getMaxInternalScoreBatch($id, $batch);
+		$data['minInternalScore'] = $this->data_lib->getMinInternalScoreBatch($id, $batch);
+		$data['avgInternalScore'] = $this->data_lib->getAvgInternalScoreBatch($id, $batch);
+		$data['maxExternalScore'] = $this->data_lib->getMaxExternalScoreBatch($id, $batch);
+		$data['minExternalScore'] = $this->data_lib->getMinExternalScoreBatch($id, $batch);
+		$data['avgExternalScore'] = $this->data_lib->getAvgExternalScoreBatch($id, $batch);
+		$data['internalScores'] = $this->data_lib->getInternalScoresBatch($id, $batch);
+		$data['externalScores'] = $this->data_lib->getExternalScoresBatch($id, $batch);
+
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->view('subject_analysis_batch', $data);
+	}
+
 
 	public function subjects()
 	{
@@ -117,7 +126,20 @@ class Home extends CI_Controller {
 		$data['left'] = $this->left;
 		$this->load->library('Data_lib');
 		$data['departments'] =  $this->data_lib->getDepartments();
+		$data['subjects'] = $this->data_lib->getSubjects();
 		$this->load->view('choose_subject_for_analysis', $data);
+	}
+
+	public function choose_subject_batch_for_analysis()
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['departments'] =  $this->data_lib->getDepartments();
+		$data['subjects'] = $this->data_lib->getSubjects();
+		$data['batches'] = $this->data_lib->getBatches();
+		$this->load->view('choose_subject_batch_for_analysis', $data);
 	}
 
 	public function add_student()
@@ -129,6 +151,18 @@ class Home extends CI_Controller {
 		$data['departments'] =  $this->data_lib->getDepartments();
 		$data['batches'] =  $this->data_lib->getBatches();
 		$this->load->view('add_student', $data);
+	}
+
+	public function goForSubjectAnalysis(){
+		$subject = '';
+
+
+		if ($x = $this->input->post('subject')) {
+			$subject = $x;
+		}
+		redirect(base_url('/subject_analysis/'.$subject));
+
+
 	}
 
 	public function addBatch()

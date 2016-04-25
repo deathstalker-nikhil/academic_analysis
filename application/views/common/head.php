@@ -38,7 +38,7 @@
           fill: FireBrick;
       }
 
-     
+
 </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -70,33 +70,22 @@
             </div>
 
         </div>
+        <section id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading"></h2>
+                    </div>
+                </div>
+                <div class="row" style="height: 300px;">
+                    <div class="col-lg-12">
+                        <form id="mainSearchForm" onsubmit="return false;" action="/login">
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav menu">
-
-                        <li>
-                            <a class="page-scroll" href="#">Home</a>
-
-                        </li>
-
-
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>

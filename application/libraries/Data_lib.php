@@ -67,6 +67,20 @@ class Data_lib {
 		return $CI->data->getMaxInternalScore($id);
 	}
 
+	public function getMaxInternalScoreBatch($id,$batch)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getMaxInternalScoreBatch($id, $batch);
+	}
+
+	public function getMinInternalScoreBatch($id,$batch)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getMinInternalScoreBatch($id, $batch);
+	}
+
 	public function getMinInternalScore($id)
 	{
 		$CI = & get_instance();
@@ -81,6 +95,20 @@ class Data_lib {
 		return $CI->data->getAvgInternalScore($id);
 	}
 
+	public function getAvgInternalScoreBatch($id,$batch)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getAvgInternalScoreBatch($id,$batch);
+	}
+
+	public function getAvgExternalScoreBatch($id,$batch)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getAvgExternalScoreBatch($id,$batch);
+	}
+
 	public function getMaxExternalScore($id)
 	{
 		$CI = & get_instance();
@@ -88,11 +116,25 @@ class Data_lib {
 		return $CI->data->getMaxExternalScore($id);
 	}
 
+	public function getMaxExternalScoreBatch($id, $batch)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getMaxExternalScoreBatch($id, $batch);
+	}
+
 	public function getMinExternalScore($id)
 	{
 		$CI = & get_instance();
 		$CI->load->model('data_model','data');
 		return $CI->data->getMinExternalScore($id);
+	}
+
+	public function getMinExternalScoreBatch($id, $batch)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getMinExternalScoreBatch($id, $batch);
 	}
 
 	public function getAvgExternalScore($id)
@@ -114,6 +156,20 @@ class Data_lib {
 		$CI = & get_instance();
 		$CI->load->model('data_model','data');
 		return $CI->data->getInternalScores($id);
+	}
+
+	public function getInternalScoresBatch($id, $batch)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getInternalScoresBatch($id, $batch);
+	}
+
+	public function getExternalScoresBatch($id, $batch)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->getExternalScoresBatch($id, $batch);
 	}
 
 	public function getExternalScores($id)

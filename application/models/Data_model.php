@@ -62,11 +62,25 @@ class Data_model extends CI_Model {
 		$result = $this->db->get('subjects');
 		return $result->result_array();
 	}
-////
+
 	public function getInternalScores($id)
 	{
 		$SQL = "SELECT `internal`,COUNT(`internal`) AS numberOfStudents FROM `scores` WHERE `subject_id`='$id' GROUP BY `internal`";
 		$query = $this->db->query($SQL);
+	return $query->result_array();
+	}
+
+	public function getInternalScoresBatch($id, $batch)
+	{
+			$sql = "select scores.internal, count(scores.internal) AS numberOfStudents from scores join students on students.id = scores.student_id where students.batch = 1 and scores.subject_id =1 GROUP BY scores.internal";
+		$query = $this->db->query($sql);
+	return $query->result_array();
+	}
+
+	public function getExternalScoresBatch($id, $batch)
+	{
+			$sql = "select scores.external, count(scores.external) AS numberOfStudents from scores join students on students.id = scores.student_id where students.batch = 1 and scores.subject_id =1 GROUP BY scores.external";
+		$query = $this->db->query($sql);
 	return $query->result_array();
 	}
 
@@ -93,6 +107,20 @@ return $query->result_array();
 		return $result->result_array();
 	}
 
+	public function getMaxInternalScoreBatch($id, $batch)
+	{
+		$sql = "select scores.internal from scores join students on students.id = scores.student_id where students.batch = $batch and scores.subject_id =$id order by scores.internal desc limit 1";
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+
+	public function getMinInternalScoreBatch($id, $batch)
+	{
+		$sql = "select scores.internal from scores join students on students.id = scores.student_id where students.batch = $batch and scores.subject_id =$id order by scores.internal asc limit 1";
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+
 	public function getMinInternalScore($id)
 	{
 		$this->db->select_min('internal');
@@ -107,11 +135,39 @@ return $query->result_array();
 		return $result->result_array();
 	}
 
+	public function getAvgInternalScoreBatch($id, $batch)
+	{
+		$sql = "select AVG(scores.internal) AS internal from scores join students on students.id = scores.student_id where students.batch = $batch and scores.subject_id =$id";
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+
+	public function getAvgExternalScoreBatch($id, $batch)
+	{
+		$sql = "select AVG(scores.external) AS external from scores join students on students.id = scores.student_id where students.batch = $batch and scores.subject_id =$id";
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+
 	public function getMaxExternalScore($id)
 	{
 		$this->db->select_max('external');
 		$result = $this->db->get_where('scores',array('subject_id' => $id));
 		return $result->result_array();
+	}
+
+	public function getMaxExternalScoreBatch($id, $batch)
+	{
+		$sql = "select scores.external from scores join students on students.id = scores.student_id where students.batch = $batch and scores.subject_id =$id order by scores.external desc limit 1";
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+
+	public function getMinExternalScoreBatch($id, $batch)
+	{
+		$sql = "select scores.external from scores join students on students.id = scores.student_id where students.batch = $batch and scores.subject_id =$id order by scores.external asc limit 1";
+		$query = $this->db->query($sql);
+		return $query->result_array();
 	}
 
 	public function getMinExternalScore($id)

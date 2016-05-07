@@ -11,7 +11,7 @@
             <!-- Content Column -->
             <div class="col-md-9">
 
-                <h4>Subject Analysis for <strong>Design and Analysis of Algorithm</strong></h4>
+                <h4>Subject Batch Analysis</h4>
 
                 <div class="col-md-6">
                     <h6>Minimum Internal Marks Scored: <?php echo $minInternalScore[0]['internal']; ?></h6>
@@ -31,6 +31,8 @@
                 <div class="col-md-6">
                     <h6>Maximum External Marks Scored: <?php echo $maxExternalScore[0]['external']; ?></h6>
                 </div>
+<br>
+<p>On x-axis we have the score and on the y-axis we have the number of students</p>
 <br>
 <h6>Internal Score Analysis</h6>
 <svg id="internalVisualisation" width="1000" height="500"></svg>

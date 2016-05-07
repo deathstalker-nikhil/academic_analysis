@@ -12,7 +12,7 @@
             <div class="col-md-9">
 
                 <h3>CHOOSE SUBJECT FOR ANALYSIS</h3>
-                <form method="post" action="/home/goForSubjectAnalysis">
+                <form method="post" action="/home/goForSubjectBatchAnalysis">
 
 
                 <div class="col-md-12">
@@ -28,12 +28,24 @@
                 </div>
 
 
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label>Subject</label>
                         <select class="form-control" name="subject">
                           <?php foreach ($subjects as $key => $value) { ?>
                           <option value="<?php echo $value['id']; ?>"><?php echo $value['subject_code']." - ".$value['subject_name']; ?></option>
+                          <?php } ?>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Batch</label>
+                        <select class="form-control" name="batch">
+                          <?php foreach ($batches as $key => $value) { ?>
+                          <option value="<?php echo $value['id']; ?>"><?php echo $value['start_year']." - ".$value['end_year']; ?></option>
                           <?php } ?>
                         </select>
 

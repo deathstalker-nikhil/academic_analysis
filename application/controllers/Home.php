@@ -253,6 +253,22 @@ class Home extends CI_Controller {
 
 	}
 
+	public function goForSubjectBatchAnalysis(){
+		$subject = '';
+		$batch = '';
+
+
+		if ($x = $this->input->post('subject')) {
+			$subject = $x;
+		}
+		if ($x = $this->input->post('batch')) {
+			$batch = $x;
+		}
+		redirect(base_url('/subject_analysis_batch/'.$subject.'/'.$batch));
+
+
+	}
+
 
 	public function goForScorePredictor(){
 		$subject = '';

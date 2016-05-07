@@ -10,6 +10,6 @@
                     <h4 style="text-align: center;">Academic Analysis</h4>
 
                      <a href="/choose_subject_for_analysis" class="list-group-item side">Select Subject for Analysis</a>
-                     <a href="/choose_subject_for_analysis" class="list-group-item side">Select Subject and Batch for Analysis</a>
+                     <a href="/choose_subject_batch_for_analysis" class="list-group-item side">Select Subject and Batch for Analysis</a>
                      <a href="/score_prediction" class="list-group-item side">Score Prediction</a>
                 </div>

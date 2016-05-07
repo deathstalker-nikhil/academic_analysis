@@ -119,6 +119,37 @@ class Home extends CI_Controller {
 		$this->load->view('add_subject', $data);
 	}
 
+	public function score_prediction_internal($subject = '')
+	{
+		$this->load->library('Data_lib');
+		$data['marks'] =  $this->data_lib->score_prediction_internal($subject);
+		$external = array();
+		$internal = array();
+		foreach ($data['marks'] as $key => $value) {
+			array_push($external,$value['externalAverage']);
+			array_push($internal,$value['internalAverage']);
+		}
+		$values = linear_regression($external, $internal);
+		$m = $values['m'];
+		$c = $values['b'];
+		$y = 40;
+		echo "Predicted Marks = ";
+		$x = ($y - $c)/$m;
+		echo $x;
+	}
+
+
+	public function score_prediction()
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['departments'] =  $this->data_lib->getDepartments();
+		$data['subjects'] = $this->data_lib->getSubjects();
+		$this->load->view('score_prediction', $data);
+	}
+
 	public function choose_subject_for_analysis()
 	{
 		$data['head'] = $this->head;
@@ -161,6 +192,25 @@ class Home extends CI_Controller {
 			$subject = $x;
 		}
 		redirect(base_url('/subject_analysis/'.$subject));
+
+
+	}
+
+
+	public function goForScorePredictor(){
+		$subject = '';
+		$prediction = '';
+
+
+		if ($x = $this->input->post('subject')) {
+			$subject = $x;
+		}
+		if ($x = $this->input->post('prediction')) {
+			$prediction = $x;
+		}
+		if ($prediction==1){
+		redirect(base_url('/score_prediction_internal/'.$subject));
+	}
 
 
 	}

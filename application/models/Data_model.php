@@ -77,6 +77,13 @@ class Data_model extends CI_Model {
 	return $query->result_array();
 	}
 
+	public function score_prediction_internal($subject)
+	{
+			$sql = "SELECT AVG(scores.external) AS externalAverage, AVG(scores.internal) AS internalAverage from scores join students on students.id = scores.student_id where scores.subject_id = $subject GROUP BY students.batch";
+		$query = $this->db->query($sql);
+	return $query->result_array();
+	}
+
 	public function getExternalScoresBatch($id, $batch)
 	{
 			$sql = "select scores.external, count(scores.external) AS numberOfStudents from scores join students on students.id = scores.student_id where students.batch = 1 and scores.subject_id =1 GROUP BY scores.external";

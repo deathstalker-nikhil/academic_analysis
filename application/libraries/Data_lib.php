@@ -60,6 +60,13 @@ class Data_lib {
 		return $CI->data->getSubjectDetails($id);
 	}
 
+	public function score_prediction_internal($subject)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->score_prediction_internal($subject);
+	}
+
 	public function getMaxInternalScore($id)
 	{
 		$CI = & get_instance();

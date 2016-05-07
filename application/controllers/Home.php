@@ -138,11 +138,29 @@ class Home extends CI_Controller {
 		$data['m'] = $m;
 		$data['c'] = $c;
 		$this->load->view('score_prediction_internal', $data);
-		// $y = 40;
-		// echo "Predicted Marks = ";
-		// $x = ($y - $c)/$m;
-		// echo $x;
 	}
+
+	public function score_prediction_attendance($subject = '')
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['marks'] =  $this->data_lib->score_prediction_attendance($subject);
+		$external = array();
+		$attendance = array();
+		foreach ($data['marks'] as $key => $value) {
+			array_push($external,$value['externalAverage']);
+			array_push($attendance,$value['attendanceAverage']);
+		}
+		$values = linear_regression($external, $attendance);
+		$m = $values['m'];
+		$c = $values['b'];
+		$data['m'] = $m;
+		$data['c'] = $c;
+		$this->load->view('score_prediction_attendance', $data);
+	}
+
 
 
 	public function score_prediction()
@@ -217,6 +235,9 @@ class Home extends CI_Controller {
 		if ($prediction==1){
 		redirect(base_url('/score_prediction_internal/'.$subject));
 	}
+	if ($prediction==3){
+	redirect(base_url('/score_prediction_attendance/'.$subject));
+}
 
 
 	}

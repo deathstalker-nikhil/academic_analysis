@@ -63,6 +63,7 @@ $route['subject_analysis/(:num)'] = 'Home/subject_analysis/$1';
 $route['subject_analysis_batch/(:num)/(:num)'] = 'Home/subject_analysis_batch/$1/$2';
 $route['score_prediction_internal/(:num)'] = 'Home/score_prediction_internal/$1';
 $route['score_prediction_attendance/(:num)'] = 'Home/score_prediction_attendance/$1';
+$route['score_prediction_extra_curricular/(:num)'] = 'Home/score_prediction_extra_curricular/$1';
 $route['subjects'] = 'Home/subjects';
 $route['score_prediction'] = 'Home/score_prediction';
 $route['404_override'] = '';

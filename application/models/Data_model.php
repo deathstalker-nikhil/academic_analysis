@@ -91,6 +91,20 @@ class Data_model extends CI_Model {
 	return $query->result_array();
 	}
 
+	public function score_prediction_extra_curricular_external($subject)
+	{
+			$sql = "SELECT AVG(scores.external) AS externalAverage from scores join students on students.id = scores.student_id where scores.subject_id = $subject GROUP BY students.batch";
+		$query = $this->db->query($sql);
+	return $query->result_array();
+	}
+
+	public function score_prediction_extra_curricular_scores()
+	{
+			$sql = "SELECT AVG(extra_curricular_scores.score) AS extraAverage from extra_curricular_scores join students on students.id = extra_curricular_scores.student_id GROUP BY students.batch";
+		$query = $this->db->query($sql);
+	return $query->result_array();
+	}
+
 	public function getExternalScoresBatch($id, $batch)
 	{
 			$sql = "select scores.external, count(scores.external) AS numberOfStudents from scores join students on students.id = scores.student_id where students.batch = 1 and scores.subject_id =1 GROUP BY scores.external";

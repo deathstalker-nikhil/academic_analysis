@@ -161,6 +161,30 @@ class Home extends CI_Controller {
 		$this->load->view('score_prediction_attendance', $data);
 	}
 
+	public function score_prediction_extra_curricular($subject = '')
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+		$this->load->library('Data_lib');
+		$data['externalScores'] =  $this->data_lib->score_prediction_extra_curricular_external($subject);
+		$data['extraScores'] =  $this->data_lib->score_prediction_extra_curricular_scores();
+		$external = array();
+		$extra = array();
+		foreach ($data['externalScores'] as $key => $value) {
+			array_push($external,$value['externalAverage']);
+		}
+		foreach ($data['extraScores'] as $key => $value) {
+			array_push($extra,$value['extraAverage']);
+		}
+		$values = linear_regression($external, $extra);
+		$m = $values['m'];
+		$c = $values['b'];
+		$data['m'] = $m;
+		$data['c'] = $c;
+		$this->load->view('score_prediction_extra_curricular', $data);
+	}
+
 
 
 	public function score_prediction()
@@ -244,6 +268,9 @@ class Home extends CI_Controller {
 		if ($prediction==1){
 		redirect(base_url('/score_prediction_internal/'.$subject));
 	}
+	if ($prediction==2){
+	redirect(base_url('/score_prediction_extra_curricular/'.$subject));
+}
 	if ($prediction==3){
 	redirect(base_url('/score_prediction_attendance/'.$subject));
 }
@@ -430,10 +457,5 @@ class Home extends CI_Controller {
 		}
 	}
 
-	public function test($id='')
-	{
-		if ($id==1)
-			return "one";
-	}
 
 }

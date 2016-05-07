@@ -11,17 +11,18 @@
             <!-- Content Column -->
             <div class="col-md-9">
 
-                <h3>SCORE PREDICTION FOR NEXT YEAR (INTERNAL SCORE)</h3>
+                <h3>SCORE PREDICTION FOR NEXT YEAR (EXTRA CURRICULAR)</h3>
 
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label>Internal Score</label>
-                        <input type="number" class="form-control" name="internal_score" max="50"  id="internal_score">
+                        <label>Extra Curricular Score</label>
+                        <input type="number" max="50" class="form-control" name="attendance" id="attendance">
                     </div>
                 </div>
-                <button class="btn btn-default" style="flaot:right;" onclick="myFunction()">Get External Score</button>
+                <button type="submit" class="btn btn-default" style="flaot:right;" onclick="myFunction()">Get External Score</button>
                 <input type="hidden" name="m" id="m" value=<?php echo $m; ?>>
                 <input type="hidden" name="c" id="c" value=<?php echo $c; ?>>
+
 <p id=predicted_score></p>
 
 <script>
@@ -29,13 +30,14 @@
   var c = document.getElementById("c").value;
         function myFunction() {
 
-          var y = document.getElementById("internal_score").value;
+          var y = document.getElementById("attendance").value;
           if (y>50){
             alert("Maxiumum Score should be less than or equal to 50")
           }
           else{
           var x = (y-c)/m;
-          document.getElementById("predicted_score").innerHTML = "The predicted external score is: " + x;}
+          document.getElementById("predicted_score").innerHTML = "The predicted external score is: " + x;
+        }
 }
 
 </script>

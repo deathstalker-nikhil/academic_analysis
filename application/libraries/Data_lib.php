@@ -74,6 +74,20 @@ class Data_lib {
 		return $CI->data->score_prediction_attendance($subject);
 	}
 
+	public function score_prediction_extra_curricular_external($subject)
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->score_prediction_extra_curricular_external($subject);
+	}
+
+	public function score_prediction_extra_curricular_scores()
+	{
+		$CI = & get_instance();
+		$CI->load->model('data_model','data');
+		return $CI->data->score_prediction_extra_curricular_scores();
+	}
+
 	public function getMaxInternalScore($id)
 	{
 		$CI = & get_instance();

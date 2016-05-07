@@ -174,6 +174,15 @@ class Home extends CI_Controller {
 		$this->load->view('score_prediction', $data);
 	}
 
+	public function login()
+	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
+
+		$this->load->view('login', $data);
+	}
+
 	public function choose_subject_for_analysis()
 	{
 		$data['head'] = $this->head;

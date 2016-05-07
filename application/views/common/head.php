@@ -47,8 +47,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "3e8a7408-39c1-4a4a-826d-461709853454", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 <body id="page-top" class="index">
 

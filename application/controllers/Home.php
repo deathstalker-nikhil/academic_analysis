@@ -121,6 +121,9 @@ class Home extends CI_Controller {
 
 	public function score_prediction_internal($subject = '')
 	{
+		$data['head'] = $this->head;
+		$data['foot'] = $this->foot;
+		$data['left'] = $this->left;
 		$this->load->library('Data_lib');
 		$data['marks'] =  $this->data_lib->score_prediction_internal($subject);
 		$external = array();
@@ -132,10 +135,13 @@ class Home extends CI_Controller {
 		$values = linear_regression($external, $internal);
 		$m = $values['m'];
 		$c = $values['b'];
-		$y = 40;
-		echo "Predicted Marks = ";
-		$x = ($y - $c)/$m;
-		echo $x;
+		$data['m'] = $m;
+		$data['c'] = $c;
+		$this->load->view('score_prediction_internal', $data);
+		// $y = 40;
+		// echo "Predicted Marks = ";
+		// $x = ($y - $c)/$m;
+		// echo $x;
 	}
 
 

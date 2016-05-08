@@ -69,7 +69,8 @@
             </div>
 
         </div>
-        <center><h1 style="margin-top: 30px;">Academic Analysis</h1></center>
+        <center><h1 style="margin-top: 25px;">University Result Analysis</h1></center>
+        <center><h3 style="margin-top: 10px;">LOGIN</h3></center>
         <section id="contact">
             <div class="container">
                 <div class="row">

@@ -8,6 +8,15 @@ class Data_model extends CI_Model {
 		$this->load->database();
 	}
 
+	public function login($username,$password)
+	{
+		$result = $this->db->get_where('admin', array('username' => $username,'password' => $password), 1, 0);
+		if ($result->num_rows()>0) {
+			return true;
+		}
+		return false;
+	}
+
 	public function addBatch($data)
 	{
 		return $this->db->insert('batches',$data);

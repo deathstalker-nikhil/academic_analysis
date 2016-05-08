@@ -11,7 +11,7 @@
             <!-- Content Column -->
             <div class="col-md-9">
 
-                <h3>CHOOSE SUBJECT FOR ANALYSIS</h3>
+                <h3>CHOOSE SUBJECT AND BATCH FOR ANALYSIS</h3>
                 <form method="post" action="/home/goForSubjectBatchAnalysis">
 
 

@@ -80,7 +80,7 @@
                 <div class="row" style="height: 300px;">
                     <div class="col-lg-12">
                       <div class="col-md-5 col-md-offset-7">
-                        <form id="mainSearchForm" onsubmit="return false;" action="/login">
+                        <form method="post" action="/home/doLogin">
                           <div>
                           <label>Username</label>
                           <input class="form-control" name="username" style="height:50px; width: 100%;">
@@ -90,7 +90,8 @@
                         <input type="password" class="form-control" name="password" style="height:50px; width: 100%;">
                       </div>
                       <div>
-                        <button class="btn" style="background: #C80237; color: #fff; float: right; margin-top: 30px;">Login</button>
+                         <input type="hidden" name="<?php echo $csrf_token_name ?>" value="<?php echo $csrf_token ?>">
+                        <button type="submit" class="btn" style="background: #C80237; color: #fff; float: right; margin-top: 30px;">Login</button>
                       </div>
                         </form>
                     </div>

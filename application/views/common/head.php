@@ -61,6 +61,9 @@
         <h3 style="color: #006666;">JSS Academy of Technical Education</h3>
        <h4>C-20/1, Sector 62, Noida, Uttar Pradesh</h4>
         </div>
+        <div class="col-md-3">
+            <a href="/logout" class="btn btn-primary" style="float: right; margin-top: 30px;">Sign Out</a>
+        </div>
 
 
 

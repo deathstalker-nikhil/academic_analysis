@@ -9,7 +9,7 @@ class Home extends CI_Controller {
 		public function __construct()
 	{
 		parent::__construct();
-		//$this->load->library(array('Data_lib','session'));
+		$this->load->library(array('Data_lib','session'));
 		$this->load->helper(array('url'));
 		$data['csrf_token_name'] = $this->security->get_csrf_token_name();
 		$data['csrf_token'] = $this->security->get_csrf_hash();
@@ -21,16 +21,32 @@ class Home extends CI_Controller {
 
 	public function batches()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
 		$data['batches'] =  $this->data_lib->getBatches();
 		$this->load->view('batches', $data);
 	}
 
+	public function index()
+	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
+	redirect(base_url('choose_subject_for_analysis'));
+	}
+
 	public function add_scores()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
@@ -40,18 +56,23 @@ class Home extends CI_Controller {
 
 	public function departments()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
 		$data['departments'] =  $this->data_lib->getDepartments();
 		$this->load->view('departments', $data);
 	}
 
 	public function subject_analysis($id='')
 	{
-
 		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['subject_details'] =  $this->data_lib->getSubjectDetails($id);
 		$data['maxInternalScore'] = $this->data_lib->getMaxInternalScore($id);
 		$data['minInternalScore'] = $this->data_lib->getMinInternalScore($id);
@@ -71,6 +92,9 @@ class Home extends CI_Controller {
 	public function subject_analysis_batch($id='', $batch='')
 	{
 		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['subject_details'] =  $this->data_lib->getSubjectDetails($id);
 		$data['maxInternalScore'] = $this->data_lib->getMaxInternalScoreBatch($id, $batch);
 		$data['minInternalScore'] = $this->data_lib->getMinInternalScoreBatch($id, $batch);
@@ -90,20 +114,28 @@ class Home extends CI_Controller {
 
 	public function subjects()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
+
 		$data['subjects'] =  $this->data_lib->getSubjects();
 		$this->load->view('subjects', $data);
 	}
 
 	public function students()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
+
 		$data['students'] =  $this->data_lib->getStudents();
 		$data['batches'] = $this->data_lib->getBatches();
 		$this->load->view('students', $data);
@@ -111,20 +143,28 @@ class Home extends CI_Controller {
 
 	public function add_subject()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
+
 		$data['departments'] =  $this->data_lib->getDepartments();
 		$this->load->view('add_subject', $data);
 	}
 
 	public function score_prediction_internal($subject = '')
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
+
 		$data['marks'] =  $this->data_lib->score_prediction_internal($subject);
 		$external = array();
 		$internal = array();
@@ -142,10 +182,14 @@ class Home extends CI_Controller {
 
 	public function score_prediction_attendance($subject = '')
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
+
 		$data['marks'] =  $this->data_lib->score_prediction_attendance($subject);
 		$external = array();
 		$attendance = array();
@@ -163,10 +207,14 @@ class Home extends CI_Controller {
 
 	public function score_prediction_extra_curricular($subject = '')
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
+
 		$data['externalScores'] =  $this->data_lib->score_prediction_extra_curricular_external($subject);
 		$data['extraScores'] =  $this->data_lib->score_prediction_extra_curricular_scores();
 		$external = array();
@@ -189,10 +237,14 @@ class Home extends CI_Controller {
 
 	public function score_prediction()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
+
 		$data['departments'] =  $this->data_lib->getDepartments();
 		$data['subjects'] = $this->data_lib->getSubjects();
 		$this->load->view('score_prediction', $data);
@@ -200,30 +252,83 @@ class Home extends CI_Controller {
 
 	public function login()
 	{
+		$this->load->library('Data_lib');
+		$this->load->library('session');
+		if ($this->data_lib->auth()){
+			redirect(base_url('home/choose_subject_for_analysis'));
+		}
+		$data['message'] = '';
+		if ($x = $this->session->flashdata('errorMessage')) {
+			$data['message'] = $x;
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
+		$data['csrf_token_name'] = $this->security->get_csrf_token_name();
+		$data['csrf_token'] = $this->security->get_csrf_hash();
+		$this->load->view('login',$data);
+	}
 
-		$this->load->view('login', $data);
+	public function doLogin()
+	{
+				$this->load->library('Data_lib');
+		if ($this->data_lib->auth()) {
+			redirect(base_url('choose_subject_for_analysis'));
+		}
+		$username = '';
+		$password = '';
+		if ($x = $this->input->post('username')) {
+			$username = $x;
+		}
+		if ($x = $this->input->post('password')) {
+			$password = $x;
+		}
+		if($username == '' || $password == ''){
+			$this->session->set_flashdata('errorMessage', 'Incomplete Details');
+			redirect(base_url('home'));
+		}
+		$result = $this->data_lib->login($username,$password);
+		if ($result) {
+			redirect(base_url('choose_subject_for_analysis'));
+		}
+
+		$this->session->set_flashdata('errorMessage', 'Invalid Details');
+		redirect(base_url('home/login'));
+	}
+
+	public function logout()
+	{
+		$this->load->library('session');
+		$this->session->sess_destroy();
+		redirect(base_url('home'));
 	}
 
 	public function choose_subject_for_analysis()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
+
 		$data['departments'] =  $this->data_lib->getDepartments();
 		$data['subjects'] = $this->data_lib->getSubjects();
 		$this->load->view('choose_subject_for_analysis', $data);
 	}
 
+
 	public function choose_subject_batch_for_analysis()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
+
 		$data['departments'] =  $this->data_lib->getDepartments();
 		$data['subjects'] = $this->data_lib->getSubjects();
 		$data['batches'] = $this->data_lib->getBatches();
@@ -232,10 +337,14 @@ class Home extends CI_Controller {
 
 	public function add_student()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$data['head'] = $this->head;
 		$data['foot'] = $this->foot;
 		$data['left'] = $this->left;
-		$this->load->library('Data_lib');
+
 		$data['departments'] =  $this->data_lib->getDepartments();
 		$data['batches'] =  $this->data_lib->getBatches();
 		$this->load->view('add_student', $data);
@@ -296,6 +405,10 @@ class Home extends CI_Controller {
 
 	public function addBatch()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$start_year = '';
 		$end_year = '';
 
@@ -316,7 +429,7 @@ class Home extends CI_Controller {
 				'start_year' => $start_year,
 				'end_year' => $end_year
 				);
-		$this->load->library('Data_lib');
+
 		$result = $this->data_lib->addBatch($data);
 		if ($result) {
 			redirect(base_url('/batches'));
@@ -328,6 +441,10 @@ class Home extends CI_Controller {
 
 	public function addStudent()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$name = '';
 		$university_roll_number = '';
 		$password = '';
@@ -369,8 +486,7 @@ class Home extends CI_Controller {
 				'batch' => $batch,
 				'department' => $department
 				);
-		$this->load->library('Data_lib');
-		$result = $this->data_lib->addStudent($data);
+	$result = $this->data_lib->addStudent($data);
 		if ($result) {
 			redirect(base_url('/students'));
 		}
@@ -381,6 +497,10 @@ class Home extends CI_Controller {
 
 	public function addDepartment()
 	{
+		$this->load->library('Data_lib');
+		if (!$this->data_lib->auth()) {
+			redirect(base_url('login'));
+		}
 		$department_name = '';
 
 		if ($x = $this->input->post('department_name')) {
@@ -395,7 +515,7 @@ class Home extends CI_Controller {
 				'department_name' => $department_name
 				);
 
-		$this->load->library('Data_lib');
+
 		$result = $this->data_lib->addDepartment($data);
 		if ($result) {
 			redirect(base_url('/departments'));
